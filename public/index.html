@@ -745,6 +745,55 @@
     /* ==========================================
        СТИЛИ ИНТЕРАКТИВНОГО ШАХМАТНОГО ПРОСМОТРЩИКА
        ========================================== */
+    .game-selector-bar {
+      display: flex;
+      gap: 0.55rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .game-select-btn {
+      flex: 1;
+      min-width: 240px;
+      text-align: left;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 0.65rem 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .game-select-btn:hover {
+      border-color: var(--accent-gold);
+    }
+
+    .game-select-btn.active {
+      background: var(--accent-gold-dim);
+      border-color: var(--accent-gold);
+      box-shadow: inset 0 0 0 1px var(--accent-gold);
+    }
+
+    .gs-top {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-gold);
+    }
+
+    .gs-Bottom {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
     .chess-viewer-grid {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -765,7 +814,6 @@
       align-items: stretch;
     }
 
-    /* Шкала оценки (Eval bar) */
     .eval-bar-outer {
       width: 18px;
       background: #262421;
@@ -956,10 +1004,10 @@
     .commentary-box {
       background: var(--bg-elevated);
       border: 1px solid var(--border-subtle);
-      border-left: 3px solid var(--accent-sindarov);
+      border-left: 3px solid var(--accent-gold);
       border-radius: 6px;
       padding: 1rem 1.15rem;
-      min-height: 128px;
+      min-height: 132px;
     }
 
     .comm-move-badge {
@@ -985,7 +1033,7 @@
       border: 1px solid var(--border-subtle);
       border-radius: 6px;
       padding: 0.75rem;
-      max-height: 185px;
+      max-height: 190px;
       overflow-y: auto;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.74rem;
@@ -1090,7 +1138,7 @@
     <a href="#chapter-3" class="toc-item"><span class="toc-dot"></span><span>III. Крест чемпиона</span></a>
     <a href="#chapter-4" class="toc-item"><span class="toc-dot"></span><span>IV. Год Дракона</span></a>
     <a href="#chapter-5" class="toc-item"><span class="toc-dot"></span><span>V. Дуэль лабораторий</span></a>
-    <a href="#sharjah-viewer" class="toc-item"><span class="toc-dot"></span><span>Партия: Шарджа-2022</span></a>
+    <a href="#sharjah-viewer" class="toc-item"><span class="toc-dot"></span><span>Разбор партий: 2022 и 2026</span></a>
     <a href="#epilogue" class="toc-item"><span class="toc-dot"></span><span>Эпилог. Раненый король</span></a>
   </nav>
 
@@ -1155,7 +1203,7 @@
 
       <p class="dropcap">В истории индийских шахмат есть священная география, и её столица — Ченнаи. В этом душном, гудящем от мотороллеров мегаполисе на берегу Бенгальского залива шахматы давно перестали быть просто настольной игрой. Благодаря Вишванатану Ананду они стали социальным лифтом, национальной религией и точной наукой.</p>
 
-      <p>Доммараджу Гукеш родился здесь 29 мая 2006 года в семье классической южноиндийской интеллигенции. Его отец, доктор Раджиникант, был успешным практикующим ЛОР-хиругом; мать, Падма Кумари, работала микробиологом в медицинском колледже. В семь лет Гукеша записали в школьный шахматный кружок просто для того, чтобы занять гиперактивного ребёнка на час три раза в неделю. Через полгода учителя развели руками и сказали родителям, что мальчика нужно показывать серьёзным специалистам.</p>
+      <p>Доммараджу Гукеш родился здесь 29 мая 2006 года в семье классической южноиндийской интеллигенции. Его отец, доктор Раджиникант, был успешным практикующим ЛОР-хирургом; мать, Падма Кумари, работала микробиологом в медицинском колледже. В семь лет Гукеша записали в школьный шахматный кружок просто для того, чтобы занять гиперактивного ребёнка на час три раза в неделю. Через полгода учителя развели руками и сказали родителям, что мальчика нужно показывать серьёзным специалистам.</p>
 
       <p>Когда Гукешу исполнилось одиннадцать и он вплотную подобрался к гроссмейстерским баллам, семья столкнулась с жестокой арифметикой профессионального спорта. Чтобы выполнить три нормы гроссмейстера в рекордные сроки, нужно было летать из страны в страну без перерыва: Франция, Испания, Сербия, Вьетнам, Россия. Спонсоров не было. И тогда доктор Раджиникант принял решение, которое в традиционном индийском обществе граничило с безумием: он положил скальпель на полку, закрыл свою врачебную практику и стал полноправным менеджером, логистом, поваром и телохранителем сына.</p>
 
@@ -1283,7 +1331,7 @@
               <span class="tl-date">Май 2022 · Шарджа</span>
               <span class="tl-tag sindarov">Первая дуэль</span>
             </div>
-            <p class="tl-desc">На турнире Sharjah Masters 16-летний Синдаров чёрными фигурами громит Гукеша — единственная результативная классическая партия между ними по сей день.</p>
+            <p class="tl-desc">На турнире Sharjah Masters 16-летний Синдаров чёрными фигурами громит Гукеша в Испанской партии.</p>
           </div>
 
           <div class="tl-card" data-player="both">
@@ -1310,6 +1358,14 @@
             <p class="tl-desc">Пока Гукеш рано вылетает на домашнем турнире, Синдаров побеждает в финале Вэй И и становится самым молодым триумфатором Кубка мира в истории.</p>
           </div>
 
+          <div class="tl-card" data-player="both">
+            <div class="tl-meta">
+              <span class="tl-date">Январь 2026 · Вейк-ан-Зее</span>
+              <span class="tl-tag both">Tata Steel Masters</span>
+            </div>
+            <p class="tl-desc">В 1-м туре Гукеш жертвует ферзя Синдарову, получает большой перевес, но Жавохир находит филигранное спасение и проходит весь супертурнир без поражений.</p>
+          </div>
+
           <div class="tl-card" data-player="gukesh">
             <div class="tl-meta">
               <span class="tl-date">Март 2026 · Прага</span>
@@ -1323,7 +1379,7 @@
               <span class="tl-date">Апрель 2026 · Пейя, Кипр</span>
               <span class="tl-tag sindarov">Рекорд Претендентов</span>
             </div>
-            <p class="tl-desc">Синдаров выигрывает Турнир претендентов за тур до конца с историческим рекордом 10 из 14 (+6 -0 =8), обыграв по ходу дистанции Каруану и Вэй И.</p>
+            <p class="tl-desc">Синдаров выигрывает Турнир претендентов за тур до конца с историческим рекордом 10 из 14 (+6 -0 =8), обыграв по ходу дистанции Каруану, Накамуру и Вэй И.</p>
           </div>
 
           <div class="tl-card" data-player="both">
@@ -1331,7 +1387,7 @@
               <span class="tl-date">Сентябрь 2026 · Самарканд</span>
               <span class="tl-tag both">Генеральная репетиция</span>
             </div>
-            <p class="tl-desc">Синдаров без поражений приводит Узбекистан к золоту домашней Олимпиады; Индия во главе с Гукешем остаётся с серебром после осечки чемпиона в 11-м туре.</p>
+            <p class="tl-desc">Узбекистан завоёвывает золото домашней Олимпиады; Индия во главе с Гукешем остаётся с серебром после осечки чемпиона в 11-м туре против Глеба Дудина.</p>
           </div>
         </div>
       </div>
@@ -1379,13 +1435,13 @@
                 </tr>
                 <tr>
                   <td class="param-name">Рейтинг и ранг (осень 2026)</td>
-                  <td><strong>2703</strong> (№32 в мире; пик — 2794 в 10.2024)</td>
+                  <td><strong>2703</strong> (№32 в мире в сентябре; пик — 2794 в 10.2024)</td>
                   <td><strong>2778</strong> (№4 в мире; перформанс 2026 г. — 2837)</td>
                 </tr>
                 <tr>
                   <td class="param-name">Счёт личных встреч</td>
-                  <td>Классика: <strong>+0 -1 =2</strong> (Рапид/блиц: +1 -2)</td>
-                  <td>Классика: <strong>+1 -0 =2</strong> (Рапид/блиц: +2 -1)</td>
+                  <td>Взрослая элита: <strong>+0 -1 =1</strong> (с учётом юношеского Moscow Open 2018: +0 -2 =1)</td>
+                  <td>Взрослая элита: <strong>+1 -0 =1</strong> (с учётом юношеского Moscow Open 2018: +2 -0 =1)</td>
                 </tr>
                 <tr>
                   <td class="param-name">Главный тренер / секундант</td>
@@ -1511,17 +1567,29 @@
 
       <p>Но и на стороне Гукеша — тяжёлая артиллерия. Гжегож Гаевский, многолетний соратник Виши Ананда, уже доказал в Сингапуре-2024, что умеет готовить дебютные мины под конкретного соперника. Ещё в ноябре 2025 года, когда кризис Гукеша только набирал обороты, Гаевский публично заявил, что вся их программа перестроена под одну-единственную цель — пик формы к ноябрю 2026 года. То, что Гукеш пожертвовал турнирами <em>Grand Chess Tour</em> ради закрытых тренировочных лагерей, говорит о многом: в Женеве мы увидим совершенно другой дебютный репертуар чемпиона.</p>
 
-      <h3 class="sub-title">3. Призрак Шарджи и фактор тай-брейка</h3>
-      <p>В классических шахматах они встречались трижды. Главный психологический рубеж — их битва на турнире <em>Sharjah Masters</em> в мае 2022 года, где 16-летний Синдаров чёрными фигурами в анти-берлинской системе Испанской партии перехватил инициативу, выиграл ферзя за ладью и слона и разгромил Гукеша за 36 ходов. Две другие классические партии (включая их недавнюю дуэль на <em>Tata Steel Masters</em> в Вейк-ан-Зее в январе 2026 года) завершились вничью.</p>
+      <h3 class="sub-title">3. От разгрома в Шардже до жертвы ферзя в Вейк-ан-Зее</h3>
+      <p>В классических шахматах они встречались трижды (ещё в 2018 году 12-летний Синдаров обыграл 11-летнего Гукеша на <em>Moscow Open</em>). Но две их главные дуэли на элитном уровне идеально иллюстрируют драматургию предстоящего матча: в мае 2022 года на <em>Sharjah Masters</em> Синдаров чёрными разгромил Гукеша в анти-Берлине, а 17 января 2026 года в 1-м туре <em>Tata Steel Masters</em> в Вейк-ан-Зее уже Гукеш чёрными пожертвовал ферзя, получил выигранную позицию, но Синдаров продемонстрировал чудеса изворотливости и спас партию.</p>
 
-      <!-- ИНТЕРАКТИВНЫЙ ПРОСМОТРЩИК ПАРТИИ ГУКЕШ — СИНДАРОВ (ШАРДЖА-2022) -->
+      <!-- ИНТЕРАКТИВНЫЙ ПРОСМОТРЩИК ДВУХ ПАРТИЙ (ШАРДЖА-2022 И TATA STEEL 2026) -->
       <div class="interactive-widget" id="sharjah-viewer">
-        <div class="widget-header">
+        <!-- Переключатель партий -->
+        <div class="game-selector-bar" id="gameSelectorBar">
+          <button class="game-select-btn active" data-game="sharjah2022">
+            <span class="gs-top"><span>Партия №1 · Sharjah Masters 2022</span><span>0–1 (36 ходов)</span></span>
+            <span class="gs-Bottom">Д. Гукеш (2659) — Ж. Синдаров (2609) · Разгром в анти-Берлине</span>
+          </button>
+          <button class="game-select-btn" data-game="tatasteel2026">
+            <span class="gs-top"><span>Партия №2 · Tata Steel Masters 2026 (1-й тур)</span><span>½–½ (48 ходов)</span></span>
+            <span class="gs-Bottom">Ж. Синдаров (2726) — Д. Гукеш (2754) · Жертва ферзя и спасение</span>
+          </button>
+        </div>
+
+        <div class="widget-header" style="margin-bottom: 1.1rem; padding-bottom: 0.75rem;">
           <div>
-            <div class="widget-subtitle">Архивная партия · Sharjah Masters (ОАЭ), 23 мая 2022</div>
-            <div class="widget-title">Д. Гукеш (2659) — Ж. Синдаров (2609) · 0–1 (36 ходов)</div>
+            <div class="widget-subtitle" id="viewerEventSub">Архивная партия · Sharjah Masters (ОАЭ), 23 мая 2022</div>
+            <div class="widget-title" id="viewerGameTitle">Д. Гукеш (2659) — Ж. Синдаров (2609) · 0–1</div>
           </div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:0.7rem; color:var(--accent-gold);">
+          <div id="viewerOpeningBadge" style="font-family:'JetBrains Mono', monospace; font-size:0.7rem; color:var(--accent-gold);">
             Испанская партия (C65) · Клавиши ← →
           </div>
         </div>
@@ -1530,21 +1598,21 @@
           <!-- Левая колонка: Оценка + Доска + Кнопки -->
           <div class="board-area">
             <div class="eval-bar-outer" title="Оценка позиции">
-              <div class="eval-score-label" id="evalLabel">0.0</div>
+              <div class="eval-score-label" id="evalLabel">+0.2</div>
               <div class="eval-bar-white" id="evalBarWhite"></div>
             </div>
 
             <div class="board-wrapper">
               <div class="player-strip" id="topPlayerStrip">
-                <span class="p-name"><span class="p-dot black-p"></span>Жавохир Синдаров (2609)</span>
-                <span style="color:var(--accent-sindarov)">Чёрные</span>
+                <span class="p-name" id="topPlayerName"><span class="p-dot black-p"></span>Жавохир Синдаров (2609)</span>
+                <span id="topPlayerSide" style="color:var(--accent-sindarov)">Чёрные</span>
               </div>
 
               <div class="chessboard" id="chessboard"></div>
 
               <div class="player-strip" id="bottomPlayerStrip">
-                <span class="p-name"><span class="p-dot white-p"></span>Доммараджу Гукеш (2659)</span>
-                <span style="color:var(--accent-gukesh)">Белые</span>
+                <span class="p-name" id="bottomPlayerName"><span class="p-dot white-p"></span>Доммараджу Гукеш (2659)</span>
+                <span id="bottomPlayerSide" style="color:var(--accent-gukesh)">Белые</span>
               </div>
 
               <div class="board-controls">
@@ -1565,9 +1633,7 @@
                 <span id="commMoveTitle">Начальная позиция</span>
                 <span id="commEvalBadge">Оценка: +0.2</span>
               </div>
-              <p class="comm-text" id="commText">
-                Первая классическая встреча двух будущих участников женевского матча (3-й тур Sharjah Masters 2022). Гукеш играет белыми и имеет преимущество в 50 пунктов рейтинга. Нажмите «▶» или выберите ход в нотации ниже, чтобы проследить, как Синдаров перехватил инициативу.
-              </p>
+              <p class="comm-text" id="commText"></p>
             </div>
 
             <div class="moves-list-container" id="movesList"></div>
@@ -1575,7 +1641,7 @@
         </div>
       </div>
 
-      <p>Это создаёт чёткий стратегический расклад на 14 партий женевского матча. Если счёт дойдёт до отметки 7:7 и судьба короны будет решаться 12 декабря на тай-брейке (рапид 15+10, затем 10+5 и блиц 3+2), шансы Синдарова взлетят до небес. Человек, выигравший Кубок мира на тай-брейках и с детства привыкший играть молниеносно, в быстрых контролях чувствует себя как рыба в воде. Гукешу, чтобы сохранить титул, жизненно необходимо решать вопрос в классической части дистанции.</p>
+      <p>Этот контраст двух партий задаёт главный вопрос на 14 партий женевского матча: сумеет ли Гукеш дожимать такие позиции, какую он получил против Синдарова в Вейк-ан-Зее, или непробиваемая защита и темповая игра узбекского претендента доведут дело до тай-брейка 12 декабря, где в рапиде и блице Синдаров будет чувствовать себя в родной стихии?</p>
     </section>
 
     <div class="ornament-divider">✦ ✦ ✦</div>
@@ -1725,88 +1791,189 @@
     });
 
     // =========================================================
-    // 7. ДВИЖОК ПРОСМОТРЩИКА ПАРТИИ ГУКЕШ — СИНДАРОВ (ШАРДЖА-2022)
+    // 7. ДВИЖОК ПРОСМОТРЩИКА ДВУХ ПАРТИЙ (ШАРДЖА-2022 И ВЕЙК-АН-ЗЕЕ-2026)
     // =========================================================
     const PIECE_UNICODE = {
       'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙',
       'k': '♚', 'q': '♛', 'r': '♜', 'b': '♝', 'n': '♞', 'p': '♟'
     };
 
-    // Полная запись партии Гукеш - Синдаров, Sharjah Masters 2022 (0-1, 36 ходов)
-    const SHARJAH_MOVES = [
-      { san: "e4", from: "e2", to: "e4", eval: 0.2 },
-      { san: "e5", from: "e7", to: "e5", eval: 0.2 },
-      { san: "Кf3", from: "g1", to: "f3", eval: 0.2 },
-      { san: "Кc6", from: "b8", to: "c6", eval: 0.2 },
-      { san: "Сb5", from: "f1", to: "b5", eval: 0.2, note: "Испанская партия. Гукеш выбирает фундаментальную классику, приглашая соперника в вязкую стратегическую борьбу." },
-      { san: "Кf6", from: "g8", to: "f6", eval: 0.1, note: "Берлинская защита — главный щит современной шахматной элиты против 1.e4." },
-      { san: "d3", from: "d2", to: "d3", eval: 0.2, note: "Анти-Берлин. Вместо форсированного берлинского эндшпиля (4.0-0 Кxe4) Гукеш сохраняет фигуры на доске для глубокого счёта в миттельшпиле." },
-      { san: "Сc5", from: "f8", to: "c5", eval: 0.1 },
-      { san: "c3", from: "c2", to: "c3", eval: 0.2 },
-      { san: "0-0", from: "e8", to: "g8", castle: "k", eval: 0.1 },
-      { san: "0-0", from: "e1", to: "g1", castle: "K", eval: 0.1 },
-      { san: "d6", from: "d7", to: "d6", eval: 0.1 },
-      { san: "h3", from: "h2", to: "h3", eval: 0.1 },
-      { san: "a5", from: "a7", to: "a5", eval: 0.0, note: "Синдаров захватывает пространство на ферзевом фланге и пресекает типовой захват b2-b4." },
-      { san: "Лe1", from: "f1", to: "e1", eval: 0.1 },
-      { san: "Сa7", from: "c5", to: "a7", eval: 0.0 },
-      { san: "Кbd2", from: "b1", to: "d2", eval: 0.1 },
-      { san: "Кe7", from: "c6", to: "e7", eval: 0.0, note: "Классический испанский перевод коня на королевский фланг (c6–e7–g6). Позиция в пределах динамического равенства." },
-      { san: "d4", from: "d3", to: "d4", eval: 0.1 },
-      { san: "Кg6", from: "e7", to: "g6", eval: 0.0 },
-      { san: "Сd3", from: "b5", to: "d3", eval: 0.0 },
-      { san: "Кh5", from: "f6", to: "h5", eval: -0.2, note: "Фирменный почерк Синдарова! Оба чёрных коня нацелились на поле f4. Пока Гукеш тратит время на расчёт длинных манёвров, Жавохир мгновенно обостряет игру." },
-      { san: "Сf1", from: "d3", to: "f1", eval: -0.2 },
-      { san: "Фf6", from: "d8", to: "f6", eval: -0.3 },
-      { san: "Кc4", from: "d2", to: "c4", eval: -0.3 },
-      { san: "Кhf4", from: "h5", to: "f4", eval: -0.5, note: "Чёрный конь вторгается на f4. На часах у Синдарова уже солидный перевес, а над королевским флангом белых сгущаются тучи." },
-      { san: "Кe3", from: "c4", to: "e3", eval: -0.4 },
-      { san: "ed", from: "e5", to: "d4", eval: -0.5 },
-      { san: "Кxd4", from: "f3", to: "d4", eval: -0.6 },
-      { san: "Сd7", from: "c8", to: "d7", eval: -0.6 },
-      { san: "Кdf5", from: "d4", to: "f5", eval: -0.8 },
-      { san: "Лfe8", from: "f8", to: "e8", eval: -1.1, note: "Все фигуры Синдарова мобилизованы до предела. Пешка e4 подвисает, а белым фигурам тесно." },
-      { san: "Фf3", from: "d1", to: "f3", eval: -1.3 },
-      { san: "Сc6", from: "d7", to: "c6", eval: -1.6, note: "Рентген белого слона c6 и ладьи e8 делает защиту пешки e4 практически невозможной." },
-      { san: "Кg4", from: "e3", to: "g4", eval: -1.9, note: "Гукеш в приближающемся цейтноте идёт на тактическое обострение, но у Синдарова всё посчитано." },
-      { san: "Фxf5!", from: "f6", to: "f5", eval: -2.4, note: "Блестящий тактический удар! Чёрные забирают коня f5, пользуясь связкой по линии «е»." },
-      { san: "Сxf4", from: "c1", to: "f4", eval: -2.5 },
-      { san: "Кh4", from: "g6", to: "h4", eval: -2.8, note: "Контрудар с темпом по белому ферзю f3." },
-      { san: "Фg3", from: "f3", to: "g3", eval: -2.8 },
-      { san: "Фh5", from: "f5", to: "h5", eval: -3.0 },
-      { san: "Кf6+", from: "g4", to: "f6", eval: -3.2 },
-      { san: "Крh8", from: "g8", to: "h8", eval: -3.2 },
-      { san: "Кxe8", from: "f6", to: "e8", eval: -3.3 },
-      { san: "Лxe8", from: "a8", to: "e8", eval: -3.4, note: "Гукеш выиграл качество, но его пешка e4 сейчас падёт, а оба чёрных слона (a7 и c6) рассекают доску как лазеры." },
-      { san: "Сd3", from: "f1", to: "d3", eval: -3.5 },
-      { san: "Фg6!", from: "h5", to: "g6", eval: -4.2, note: "Хладнокровная геометрия Синдарова: связка по вертикали «g» и диагонали a7–g1 парализует белых." },
-      { san: "Фxh4", from: "g3", to: "h4", eval: -4.2 },
-      { san: "Сxe4", from: "c6", to: "e4", eval: -4.5 },
-      { san: "Сf1", from: "d3", to: "f1", eval: -4.6 },
-      { san: "f6", from: "f7", to: "f6", eval: -4.7 },
-      { san: "Сe3", from: "f4", to: "e3", eval: -4.8 },
-      { san: "Сxe3", from: "a7", to: "e3", eval: -5.0 },
-      { san: "Лxe3", from: "e1", to: "e3", eval: -5.0 },
-      { san: "d5", from: "d6", to: "d5", eval: -5.2 },
-      { san: "Лg3", from: "e3", to: "g3", eval: -5.4 },
-      { san: "Фf7", from: "g6", to: "f7", eval: -5.5 },
-      { san: "Лe3", from: "g3", to: "e3", eval: -5.6 },
-      { san: "c6", from: "c7", to: "c6", eval: -5.7 },
-      { san: "Лae1", from: "a1", to: "e1", eval: -5.8 },
-      { san: "Фc7", from: "f7", to: "c7", eval: -6.0 },
-      { san: "c4", from: "c3", to: "c4", eval: -6.2 },
-      { san: "Фb6", from: "c7", to: "b6", eval: -6.5 },
-      { san: "cd", from: "c4", to: "d5", eval: -6.5 },
-      { san: "cd", from: "c6", to: "d5", eval: -6.6 },
-      { san: "b3", from: "b2", to: "b3", eval: -6.7 },
-      { san: "Лe5", from: "e8", to: "e5", eval: -7.0 },
-      { san: "Лc1", from: "e1", to: "c1", eval: -7.2 },
-      { san: "h6", from: "h7", to: "h6", eval: -7.4, note: "Чёрный король получает форточку, у белых нет ни малейшей контригры." },
-      { san: "Лec3", from: "e3", to: "c3", eval: -8.0 },
-      { san: "Лg5!", from: "e5", to: "g5", eval: -9.5, note: "Смертельная связка по линии «g». Белые беззащитны перед угрозами королю и белому ферзю." },
-      { san: "Лc8+", from: "c3", to: "c8", eval: -9.5 },
-      { san: "Крh7", from: "h8", to: "h7", eval: -9.8, note: "На 36-м ходу Доммараджу Гукеш остановил часы и признал поражение: спасения от взятия на g2 с последующим разгромом нет. Образцовая партия Жавохира Синдарова!" }
-    ];
+    const GAMES_DB = {
+      sharjah2022: {
+        eventSub: "Архивная партия · Sharjah Masters (ОАЭ), 3-й тур, 23 мая 2022",
+        title: "Д. Гукеш (2659) — Ж. Синдаров (2609) · 0–1 (36 ходов)",
+        opening: "Испанская партия, Анти-Берлин (C65) · Клавиши ← →",
+        whiteName: "Доммараджу Гукеш (2659)",
+        blackName: "Жавохир Синдаров (2609)",
+        whiteColorVar: "var(--accent-gukesh)",
+        blackColorVar: "var(--accent-sindarov)",
+        introComment: "В мае 2022 года на международном турнире в Шардже Гукеш имел на 50 пунктов Эло больше. Однако именно в этой партии проявился неудобный для индийца контраст стилей: пока Гукеш тратил уйму времени на расчёт вязких манёвров, Синдаров играл молниеносно и перехватил инициативу на королевском фланге.",
+        moves: [
+          { san: "e4", from: "e2", to: "e4", eval: 0.2 },
+          { san: "e5", from: "e7", to: "e5", eval: 0.2 },
+          { san: "Кf3", from: "g1", to: "f3", eval: 0.2 },
+          { san: "Кc6", from: "b8", to: "c6", eval: 0.2 },
+          { san: "Сb5", from: "f1", to: "b5", eval: 0.2, note: "Испанская партия. Гукеш выбирает фундаментальную классику, приглашая соперника в вязкую стратегическую борьбу." },
+          { san: "Кf6", from: "g8", to: "f6", eval: 0.1, note: "Берлинская защита — главный щит современной элиты против 1.e4." },
+          { san: "d3", from: "d2", to: "d3", eval: 0.2, note: "Анти-Берлин. Вместо форсированного эндшпиля Гукеш сохраняет фигуры на доске для глубокого счёта в миттельшпиле." },
+          { san: "Сc5", from: "f8", to: "c5", eval: 0.1 },
+          { san: "c3", from: "c2", to: "c3", eval: 0.2 },
+          { san: "0-0", from: "e8", to: "g8", castle: "k", eval: 0.1 },
+          { san: "0-0", from: "e1", to: "g1", castle: "K", eval: 0.1 },
+          { san: "d6", from: "d7", to: "d6", eval: 0.1 },
+          { san: "h3", from: "h2", to: "h3", eval: 0.1 },
+          { san: "a5", from: "a7", to: "a5", eval: 0.0, note: "Синдаров захватывает пространство на ферзевом фланге и пресекает захват b2-b4." },
+          { san: "Лe1", from: "f1", to: "e1", eval: 0.1 },
+          { san: "Сa7", from: "c5", to: "a7", eval: 0.0 },
+          { san: "Кbd2", from: "b1", to: "d2", eval: 0.1 },
+          { san: "Кe7", from: "c6", to: "e7", eval: 0.0, note: "Классический испанский перевод коня на королевский фланг (c6–e7–g6)." },
+          { san: "d4", from: "d3", to: "d4", eval: 0.1 },
+          { san: "Кg6", from: "e7", to: "g6", eval: 0.0 },
+          { san: "Сd3", from: "b5", to: "d3", eval: 0.0 },
+          { san: "Кh5", from: "f6", to: "h5", eval: -0.2, note: "Фирменный почерк Синдарова! Оба чёрных коня нацелились на поле f4. Жавохир мгновенно обостряет игру." },
+          { san: "Сf1", from: "d3", to: "f1", eval: -0.2 },
+          { san: "Фf6", from: "d8", to: "f6", eval: -0.3 },
+          { san: "Кc4", from: "d2", to: "c4", eval: -0.3 },
+          { san: "Кhf4", from: "h5", to: "f4", eval: -0.5, note: "Конь вторгается на f4. На часах у Синдарова уже солидный перевес." },
+          { san: "Кe3", from: "c4", to: "e3", eval: -0.4 },
+          { san: "ed", from: "e5", to: "d4", eval: -0.5 },
+          { san: "Кxd4", from: "f3", to: "d4", eval: -0.6 },
+          { san: "Сd7", from: "c8", to: "d7", eval: -0.6 },
+          { san: "Кdf5", from: "d4", to: "f5", eval: -0.8 },
+          { san: "Лfe8", from: "f8", to: "e8", eval: -1.1, note: "Все фигуры Синдарова мобилизованы до предела. Пешка e4 подвисает." },
+          { san: "Фf3", from: "d1", to: "f3", eval: -1.3 },
+          { san: "Сc6", from: "d7", to: "c6", eval: -1.6, note: "Рентген слона c6 и ладьи e8 делает защиту пешки e4 практически невозможной." },
+          { san: "Кg4", from: "e3", to: "g4", eval: -1.9, note: "Гукеш в приближающемся цейтноте идёт на тактическое обострение, но у Синдарова всё посчитано." },
+          { san: "Фxf5!", from: "f6", to: "f5", eval: -2.4, note: "Сильный тактический удар! Чёрные забирают коня f5, пользуясь связкой по линии «е»." },
+          { san: "Сxf4", from: "c1", to: "f4", eval: -2.5 },
+          { san: "Кh4", from: "g6", to: "h4", eval: -2.8, note: "Контрудар с темпом по белому ферзю f3." },
+          { san: "Фg3", from: "f3", to: "g3", eval: -2.8 },
+          { san: "Фh5", from: "f5", to: "h5", eval: -3.0 },
+          { san: "Кf6+", from: "g4", to: "f6", eval: -3.2 },
+          { san: "Крh8", from: "g8", to: "h8", eval: -3.2 },
+          { san: "Кxe8", from: "f6", to: "e8", eval: -3.3 },
+          { san: "Лxe8", from: "a8", to: "e8", eval: -3.4, note: "Гукеш выиграл качество, но его пешка e4 сейчас падёт, а два слона чёрных доминируют." },
+          { san: "Сd3", from: "f1", to: "d3", eval: -3.5 },
+          { san: "Фg6!", from: "h5", to: "g6", eval: -4.2, note: "Хладнокровная геометрия Синдарова: связка по вертикали «g» и диагонали a7–g1 парализует белых." },
+          { san: "Фxh4", from: "g3", to: "h4", eval: -4.2 },
+          { san: "Сxe4", from: "c6", to: "e4", eval: -4.5 },
+          { san: "Сf1", from: "d3", to: "f1", eval: -4.6 },
+          { san: "f6", from: "f7", to: "f6", eval: -4.7 },
+          { san: "Сe3", from: "f4", to: "e3", eval: -4.8 },
+          { san: "Сxe3", from: "a7", to: "e3", eval: -5.0 },
+          { san: "Лxe3", from: "e1", to: "e3", eval: -5.0 },
+          { san: "d5", from: "d6", to: "d5", eval: -5.2 },
+          { san: "Лg3", from: "e3", to: "g3", eval: -5.4 },
+          { san: "Фf7", from: "g6", to: "f7", eval: -5.5 },
+          { san: "Лe3", from: "g3", to: "e3", eval: -5.6 },
+          { san: "c6", from: "c7", to: "c6", eval: -5.7 },
+          { san: "Лae1", from: "a1", to: "e1", eval: -5.8 },
+          { san: "Фc7", from: "f7", to: "c7", eval: -6.0 },
+          { san: "c4", from: "c3", to: "c4", eval: -6.2 },
+          { san: "Фb6", from: "c7", to: "b6", eval: -6.5 },
+          { san: "cd", from: "c4", to: "d5", eval: -6.5 },
+          { san: "cd", from: "c6", to: "d5", eval: -6.6 },
+          { san: "b3", from: "b2", to: "b3", eval: -6.7 },
+          { san: "Лe5", from: "e8", to: "e5", eval: -7.0 },
+          { san: "Лc1", from: "e1", to: "c1", eval: -7.2 },
+          { san: "h6", from: "h7", to: "h6", eval: -7.4, note: "Чёрный король получает форточку, у белых нет ни малейшей контригры." },
+          { san: "Лec3", from: "e3", to: "c3", eval: -8.0 },
+          { san: "Лg5!", from: "e5", to: "g5", eval: -9.5, note: "Решающая связка по линии «g». Белые беззащитны перед угрозами королю и ферзю." },
+          { san: "Лc8+", from: "c3", to: "c8", eval: -9.5 },
+          { san: "Крh7", from: "h8", to: "h7", eval: -9.8, note: "На 36-м ходу Гукеш признал поражение: спасения от взятия на g2 нет." }
+        ]
+      },
+
+      tatasteel2026: {
+        eventSub: "88-й супертурнир Tata Steel Chess Masters (Вейк-ан-Зее), 1-й тур, 17 января 2026",
+        title: "Ж. Синдаров (2726) — Д. Гукеш (2754) · ½–½ (48 ходов)",
+        opening: "Отказанный ферзевый гамбит (D37) · Клавиши ← →",
+        whiteName: "Жавохир Синдаров (2726)",
+        blackName: "Доммараджу Гукеш (2754)",
+        whiteColorVar: "var(--accent-sindarov)",
+        blackColorVar: "var(--accent-gukesh)",
+        introComment: "Их последняя классическая дуэль перед женевским матчем! В 1-м туре Вейк-ан-Зее-2026 встретились действующий обладатель Кубка мира и действующий чемпион мира. Гукеш чёрными смело пожертвовал ферзя за ладью и фигуру, получил огромный перевес, но в цейтноте выпустил победу — Синдаров нашёл фантастический ресурс спасения.",
+        moves: [
+          { san: "d4", from: "d2", to: "d4", eval: 0.2 },
+          { san: "Кf6", from: "g8", to: "f6", eval: 0.2 },
+          { san: "c4", from: "c2", to: "c4", eval: 0.2 },
+          { san: "e6", from: "e7", to: "e6", eval: 0.2 },
+          { san: "Кf3", from: "g1", to: "f3", eval: 0.2 },
+          { san: "d5", from: "d7", to: "d5", eval: 0.2, note: "Отказанный ферзевый гамбит (D37) — главное поле теоретических дискуссий в матчах на высшем уровне." },
+          { san: "Кc3", from: "b1", to: "c3", eval: 0.2 },
+          { san: "Сb4", from: "f8", to: "b4", eval: 0.2, note: "Защита Рагозина. Гукеш с первых ходов стремится к асимметричной и динамичной борьбе." },
+          { san: "cd", from: "c4", to: "d5", eval: 0.2 },
+          { san: "ed", from: "e6", to: "d5", eval: 0.2 },
+          { san: "Сg5", from: "c1", to: "g5", eval: 0.2 },
+          { san: "h6", from: "h7", to: "h6", eval: 0.2 },
+          { san: "Сh4", from: "g5", to: "h4", eval: 0.2 },
+          { san: "c5", from: "c7", to: "c5", eval: 0.1, note: "Чёрные немедленно наносят контрудар по центру, не боясь изоляции пешки d5." },
+          { san: "e3", from: "e2", to: "e3", eval: 0.2 },
+          { san: "0-0", from: "e8", to: "g8", castle: "k", eval: 0.1 },
+          { san: "dc", from: "d4", to: "c5", eval: 0.1 },
+          { san: "Сe6", from: "c8", to: "e6", eval: 0.1 },
+          { san: "Сe2", from: "f1", to: "e2", eval: 0.1 },
+          { san: "Кbd7", from: "b8", to: "d7", eval: 0.0 },
+          { san: "0-0", from: "e1", to: "g1", castle: "K", eval: 0.0 },
+          { san: "Сxc5", from: "b4", to: "c5", eval: 0.0 },
+          { san: "Лc1", from: "a1", to: "c1", eval: 0.1, note: "Классическая позиция с изолированной ферзевой пешкой (IQP). Синдаров делает ставку на блокаду поля d4, Гукеш — на фигурную активность." },
+          { san: "Лc8", from: "a8", to: "c8", eval: 0.0 },
+          { san: "Кd4", from: "f3", to: "d4", eval: 0.1 },
+          { san: "a6", from: "a7", to: "a6", eval: 0.0 },
+          { san: "Сf3", from: "e2", to: "f3", eval: 0.0 },
+          { san: "Кe5", from: "d7", to: "e5", eval: -0.1 },
+          { san: "Сe2", from: "f3", to: "e2", eval: 0.0 },
+          { san: "Кg6", from: "e5", to: "g6", eval: -0.1 },
+          { san: "Сg3", from: "h4", to: "g3", eval: 0.0 },
+          { san: "Сd6", from: "c5", to: "d6", eval: -0.1 },
+          { san: "Фb3", from: "d1", to: "b3", eval: 0.0 },
+          { san: "Сxg3", from: "d6", to: "g3", eval: -0.1 },
+          { san: "hg", from: "h2", to: "g3", eval: -0.1 },
+          { san: "Фe7", from: "d8", to: "e7", eval: -0.1 },
+          { san: "Лfd1", from: "f1", to: "d1", eval: 0.0 },
+          { san: "Лfd8", from: "f8", to: "d8", eval: -0.1 },
+          { san: "Сf3", from: "e2", to: "f3", eval: -0.1 },
+          { san: "Кe5", from: "g6", to: "e5", eval: -0.2 },
+          { san: "Кce2", from: "c3", to: "e2", eval: -0.2 },
+          { san: "Лxc1", from: "c8", to: "c1", eval: -0.2 },
+          { san: "Лxc1", from: "d1", to: "c1", eval: -0.2 },
+          { san: "Кc4", from: "e5", to: "c4", eval: -0.4, note: "Чёрный конь вторгается на c4, создавая неприятные угрозы вилки на d2." },
+          { san: "Фc3", from: "b3", to: "c3", eval: -0.4 },
+          { san: "Лc8", from: "d8", to: "c8", eval: -0.6 },
+          { san: "b3", from: "b2", to: "b3", eval: -0.9, note: "Синдаров решает прогнать коня c4, но Гукеш заранее заготовил глубокую позиционную жертву ферзя!" },
+          { san: "Кd6!", from: "c4", to: "d6", eval: -1.1 },
+          { san: "Фb2", from: "c3", to: "b2", eval: -1.2 },
+          { san: "Сg4", from: "e6", to: "g4", eval: -1.3 },
+          { san: "Лxc8+", from: "c1", to: "c8", eval: -1.4 },
+          { san: "Сxc8", from: "g4", to: "c8", eval: -1.4 },
+          { san: "Фc3", from: "b2", to: "c3", eval: -1.5 },
+          { san: "Сd7", from: "c8", to: "d7", eval: -1.6 },
+          { san: "Фc7", from: "c3", to: "c7", eval: -1.8 },
+          { san: "Кfe8", from: "f6", to: "e8", eval: -2.1, note: "Кульминация! На доске возникает редчайший дисбаланс и серия форсированных манёвров, где инициатива полностью в руках чемпиона мира." },
+          { san: "Фb8", from: "c7", to: "b8", eval: -2.3 },
+          { san: "Фe5", from: "e7", to: "e5", eval: -2.6, note: "Гукеш захватывает доминирующую централизацию и готовит прорыв на королевском фланге. Оценка движка падает ниже -2.5 в пользу чёрных!" },
+          { san: "Кf4", from: "e2", to: "f4", eval: -2.4 },
+          { san: "Кf6", from: "e8", to: "f6", eval: -2.5 },
+          { san: "Фc7", from: "b8", to: "c7", eval: -2.2 },
+          { san: "g5", from: "g7", to: "g5", eval: -1.9, note: "В поисках прямого нокаута на контрольном 40-м ходу Гукеш играет чересчур амбициозно, ослабляя прикрытие собственного короля." },
+          { san: "Кd3", from: "f4", to: "d3", eval: -1.1, note: "Синдаров мгновенно цепляется за шанс! Белый конь с темпом атакует ферзя и перебирается на идеальную стоянку c5." },
+          { san: "Фe7", from: "e5", to: "e7", eval: -0.9 },
+          { san: "Кc5", from: "d3", to: "c5", eval: -0.4, note: "Чудесное преображение позиции: белые кони на c5 и d4 связали все силы чёрных по рукам и ногам." },
+          { san: "Сc8", from: "d7", to: "c8", eval: -0.3 },
+          { san: "Фb6", from: "c7", to: "b6", eval: -0.1 },
+          { san: "Кfe4", from: "f6", to: "e4", eval: 0.0 },
+          { san: "Сxe4", from: "f3", to: "e4", eval: 0.0 },
+          { san: "de", from: "d5", to: "e4", eval: 0.0 },
+          { san: "Фb4", from: "b6", to: "b4", eval: 0.0 },
+          { san: "Фc7", from: "e7", to: "c7", eval: 0.0 },
+          { san: "Фc3", from: "b4", to: "c3", eval: 0.0 },
+          { san: "b6", from: "b7", to: "b6", eval: 0.0 },
+          { san: "Кxe4", from: "c5", to: "e4", eval: 0.0, note: "Финальный тактический удар Синдарова, уничтожающий последнюю надежду чёрных на перевес." },
+          { san: "Фxc3", from: "c7", to: "c3", eval: 0.0 },
+          { san: "Кxc3", from: "e4", to: "c3", eval: 0.0, note: "Ничья (½–½)! Выстояв под страшным натиском чемпиона мира в 1-м туре, Синдаров прошёл весь турнир Tata Steel Masters 2026 без единого поражения (+4 -0 =9)." }
+        ]
+      }
+    };
 
     function createInitialBoard() {
       return [
@@ -1822,8 +1989,8 @@
     }
 
     function sqToCoords(sq) {
-      const file = sq.charCodeAt(0) - 97; // a=0..h=7
-      const rank = 8 - parseInt(sq[1], 10); // 8=0..1=7
+      const file = sq.charCodeAt(0) - 97;
+      const rank = 8 - parseInt(sq[1], 10);
       return [rank, file];
     }
 
@@ -1831,48 +1998,8 @@
       return b.map(row => row.slice());
     }
 
-    // Предрасчёт всех позиций партии для мгновенного переключения
-    const BOARD_STATES = [{
-      board: createInitialBoard(),
-      from: null,
-      to: null,
-      eval: 0.2,
-      moveLabel: "Начальная позиция",
-      comment: "Первая классическая встреча двух будущих участников женевского матча (3-й тур Sharjah Masters 2022). Гукеш играет белыми и имеет преимущество в 50 пунктов рейтинга. Нажмите «▶» или выберите ход в нотации ниже, чтобы проследить, как Синдаров перехватил инициативу."
-    }];
-
-    let lastComment = BOARD_STATES[0].comment;
-    for (let i = 0; i < SHARJAH_MOVES.length; i++) {
-      const m = SHARJAH_MOVES[i];
-      const prevBoard = cloneBoard(BOARD_STATES[i].board);
-      const [r1, c1] = sqToCoords(m.from);
-      const [r2, c2] = sqToCoords(m.to);
-      const piece = prevBoard[r1][c1];
-      prevBoard[r1][c1] = '';
-      prevBoard[r2][c2] = piece;
-
-      if (m.castle === 'K') {
-        prevBoard[7][7] = '';
-        prevBoard[7][5] = 'R';
-      } else if (m.castle === 'k') {
-        prevBoard[0][7] = '';
-        prevBoard[0][5] = 'r';
-      }
-
-      if (m.note) lastComment = m.note;
-      const moveNum = Math.floor(i / 2) + 1;
-      const sideDots = (i % 2 === 0) ? `${moveNum}. ` : `${moveNum}... `;
-
-      BOARD_STATES.push({
-        board: prevBoard,
-        from: m.from,
-        to: m.to,
-        eval: m.eval,
-        moveLabel: `Ход ${sideDots}${m.san}`,
-        comment: lastComment
-      });
-    }
-
+    let activeGameKey = 'sharjah2022';
+    let BOARD_STATES = [];
     let currentPly = 0;
     let isFlipped = false;
     let autoPlayInterval = null;
@@ -1884,13 +2011,75 @@
     const commTextEl = document.getElementById('commText');
     const evalBarWhiteEl = document.getElementById('evalBarWhite');
     const evalLabelEl = document.getElementById('evalLabel');
+    const viewerEventSubEl = document.getElementById('viewerEventSub');
+    const viewerGameTitleEl = document.getElementById('viewerGameTitle');
+    const viewerOpeningBadgeEl = document.getElementById('viewerOpeningBadge');
     const topStrip = document.getElementById('topPlayerStrip');
     const bottomStrip = document.getElementById('bottomPlayerStrip');
 
-    // Генерация списка ходов
+    function compileGameStates(gameKey) {
+      const g = GAMES_DB[gameKey];
+      const states = [{
+        board: createInitialBoard(),
+        from: null,
+        to: null,
+        eval: 0.2,
+        moveLabel: "Начальная позиция",
+        comment: g.introComment
+      }];
+
+      let lastComment = g.introComment;
+      for (let i = 0; i < g.moves.length; i++) {
+        const m = g.moves[i];
+        const prevBoard = cloneBoard(states[i].board);
+        const [r1, c1] = sqToCoords(m.from);
+        const [r2, c2] = sqToCoords(m.to);
+        const piece = prevBoard[r1][c1];
+        prevBoard[r1][c1] = '';
+        prevBoard[r2][c2] = piece;
+
+        if (m.castle === 'K') {
+          prevBoard[7][7] = '';
+          prevBoard[7][5] = 'R';
+        } else if (m.castle === 'k') {
+          prevBoard[0][7] = '';
+          prevBoard[0][5] = 'r';
+        }
+
+        if (m.note) lastComment = m.note;
+        const moveNum = Math.floor(i / 2) + 1;
+        const sideDots = (i % 2 === 0) ? `${moveNum}. ` : `${moveNum}... `;
+
+        states.push({
+          board: prevBoard,
+          from: m.from,
+          to: m.to,
+          eval: m.eval,
+          moveLabel: `Ход ${sideDots}${m.san}`,
+          comment: lastComment
+        });
+      }
+      return states;
+    }
+
+    function updatePlayerStrips() {
+      const g = GAMES_DB[activeGameKey];
+      const whiteHTML = `<span class="p-name"><span class="p-dot white-p"></span>${g.whiteName}</span><span style="color:${g.whiteColorVar}">Белые</span>`;
+      const blackHTML = `<span class="p-name"><span class="p-dot black-p"></span>${g.blackName}</span><span style="color:${g.blackColorVar}">Чёрные</span>`;
+
+      if (!isFlipped) {
+        topStrip.innerHTML = blackHTML;
+        bottomStrip.innerHTML = whiteHTML;
+      } else {
+        topStrip.innerHTML = whiteHTML;
+        bottomStrip.innerHTML = blackHTML;
+      }
+    }
+
     function buildMovesList() {
+      const moves = GAMES_DB[activeGameKey].moves;
       movesListEl.innerHTML = '';
-      for (let i = 0; i < SHARJAH_MOVES.length; i += 2) {
+      for (let i = 0; i < moves.length; i += 2) {
         const moveNum = Math.floor(i / 2) + 1;
         const pairDiv = document.createElement('div');
         pairDiv.className = 'move-pair';
@@ -1900,21 +2089,19 @@
         numSpan.textContent = moveNum + '.';
         pairDiv.appendChild(numSpan);
 
-        // Ход белых
         const wBtn = document.createElement('button');
-        wBtn.className = 'ply-btn' + (SHARJAH_MOVES[i].note ? ' has-note' : '');
-        wBtn.textContent = SHARJAH_MOVES[i].san;
+        wBtn.className = 'ply-btn' + (moves[i].note ? ' has-note' : '');
+        wBtn.textContent = moves[i].san;
         wBtn.dataset.ply = i + 1;
-        wBtn.addEventListener('click', () => goToPly(i + 1));
+        wBtn.addEventListener('click', () => { stopAutoPlay(); goToPly(i + 1); });
         pairDiv.appendChild(wBtn);
 
-        // Ход чёрных
-        if (i + 1 < SHARJAH_MOVES.length) {
+        if (i + 1 < moves.length) {
           const bBtn = document.createElement('button');
-          bBtn.className = 'ply-btn' + (SHARJAH_MOVES[i + 1].note ? ' has-note' : '');
-          bBtn.textContent = SHARJAH_MOVES[i + 1].san;
+          bBtn.className = 'ply-btn' + (moves[i + 1].note ? ' has-note' : '');
+          bBtn.textContent = moves[i + 1].san;
           bBtn.dataset.ply = i + 2;
-          bBtn.addEventListener('click', () => goToPly(i + 2));
+          bBtn.addEventListener('click', () => { stopAutoPlay(); goToPly(i + 2); });
           pairDiv.appendChild(bBtn);
         } else {
           pairDiv.appendChild(document.createElement('span'));
@@ -1940,7 +2127,6 @@
           const sqDiv = document.createElement('div');
           sqDiv.className = 'sq ' + (isLight ? 'light' : 'dark') + (isHighlight ? ' last-move' : '');
 
-          // Координаты по краям доски
           if (colIdx === 0) {
             const rankSpan = document.createElement('span');
             rankSpan.className = 'coord-rank';
@@ -1967,7 +2153,6 @@
         }
       }
 
-      // Обновление текстовой панели и шкалы оценки
       commMoveTitleEl.textContent = state.moveLabel;
       const ev = state.eval;
       const evFormatted = (ev > 0 ? '+' : '') + ev.toFixed(1);
@@ -1975,12 +2160,10 @@
       commTextEl.textContent = state.comment;
       evalLabelEl.textContent = evFormatted;
 
-      // Преобразование оценки [-10..+10] в процент высоты белой полосы [5%..95%]
       const clamped = Math.max(-8, Math.min(8, ev));
       const whitePct = 50 + (clamped / 8) * 45;
       evalBarWhiteEl.style.height = whitePct + '%';
 
-      // Подсветка активного хода в списке
       const allPlyBtns = movesListEl.querySelectorAll('.ply-btn');
       allPlyBtns.forEach(btn => {
         const active = parseInt(btn.dataset.ply, 10) === currentPly;
@@ -1989,6 +2172,21 @@
           btn.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         }
       });
+    }
+
+    function loadGame(gameKey) {
+      stopAutoPlay();
+      activeGameKey = gameKey;
+      const g = GAMES_DB[gameKey];
+      viewerEventSubEl.textContent = g.eventSub;
+      viewerGameTitleEl.textContent = g.title;
+      viewerOpeningBadgeEl.textContent = g.opening;
+
+      BOARD_STATES = compileGameStates(gameKey);
+      currentPly = 0;
+      updatePlayerStrips();
+      buildMovesList();
+      renderBoard();
     }
 
     function goToPly(ply) {
@@ -2006,6 +2204,16 @@
       }
     }
 
+    // Обработчики переключения между партиями (Шарджа-2022 / Вейк-ан-Зее-2026)
+    const gameSelectorBtns = document.querySelectorAll('#gameSelectorBar .game-select-btn');
+    gameSelectorBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        gameSelectorBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        loadGame(btn.dataset.game);
+      });
+    });
+
     document.getElementById('btnStart').addEventListener('click', () => { stopAutoPlay(); goToPly(0); });
     document.getElementById('btnPrev').addEventListener('click', () => { stopAutoPlay(); goToPly(currentPly - 1); });
     document.getElementById('btnNext').addEventListener('click', () => { stopAutoPlay(); goToPly(currentPly + 1); });
@@ -2013,9 +2221,7 @@
 
     document.getElementById('btnFlip').addEventListener('click', () => {
       isFlipped = !isFlipped;
-      const topHTML = topStrip.innerHTML;
-      topStrip.innerHTML = bottomStrip.innerHTML;
-      bottomStrip.innerHTML = topHTML;
+      updatePlayerStrips();
       renderBoard();
     });
 
@@ -2036,7 +2242,6 @@
       }
     });
 
-    // Управление стрелками клавиатуры
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') {
         stopAutoPlay();
@@ -2047,8 +2252,8 @@
       }
     });
 
-    buildMovesList();
-    renderBoard();
+    // Инициализация первой партии по умолчанию
+    loadGame('sharjah2022');
   </script>
 </body>
 </html>
