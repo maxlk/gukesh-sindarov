@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дети XXI века: Гукеш против Синдарова — Битва в Женеве 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root[data-theme="dark"] {
+      --bg-primary: #0d0e11;
+      --bg-secondary: #14161b;
+      --bg-elevated: #1b1e26;
+      --bg-glass: rgba(20, 22, 27, 0.85);
+      --text-primary: #e8e4dc;
+      --text-secondary: #a39e93;
+      --text-muted: #6e6a61;
+      --accent-gold: #c9a55c;
+      --accent-gold-dim: rgba(201, 165, 92, 0.18);
+      --accent-gukesh: #d97757;
+      --accent-gukesh-bg: rgba(217, 119, 87, 0.12);
+      --accent-sindarov: #3b9b82;
+      --accent-sindarov-bg: rgba(59, 155, 130, 0.12);
+      --border-subtle: rgba(232, 228, 220, 0.09);
+      --border-gold: rgba(201, 165, 92, 0.35);
+      --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.55);
+    }
+
+    :root[data-theme="light"] {
+      --bg-primary: #f6f3ec;
+      --bg-secondary: #ede8dd;
+      --bg-elevated: #ffffff;
+      --bg-glass: rgba(246, 243, 236, 0.88);
+      --text-primary: #1c1b18;
+      --text-secondary: #524f49;
+      --text-muted: #858078;
+      --accent-gold: #9a7428;
+      --accent-gold-dim: rgba(154, 116, 40, 0.14);
+      --accent-gukesh: #b85332;
+      --accent-gukesh-bg: rgba(184, 83, 50, 0.1);
+      --accent-sindarov: #217861;
+      --accent-sindarov-bg: rgba(33, 120, 97, 0.1);
+      --border-subtle: rgba(28, 27, 24, 0.1);
+      --border-gold: rgba(154, 116, 40, 0.35);
+      --shadow-card: 0 16px 40px rgba(28, 27, 24, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 18px;
+    }
+
+    html[data-fontsize="large"] {
+      font-size: 20px;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.78;
+      font-weight: 300;
+      transition: background-color 0.35s ease, color 0.35s ease;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 10%, var(--accent-gold-dim) 0%, transparent 35%),
+        radial-gradient(circle at 85% 90%, var(--accent-sindarov-bg) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    /* Тонкий шахматный паттерн на фоне */
+    .chess-grid-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.025;
+      background-image: 
+        linear-gradient(45deg, var(--text-primary) 25%, transparent 25%), 
+        linear-gradient(-45deg, var(--text-primary) 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, var(--text-primary) 75%), 
+        linear-gradient(-45deg, transparent 75%, var(--text-primary) 75%);
+      background-size: 64px 64px;
+      background-position: 0 0, 0 32px, 32px -32px, -32px 0;
+    }
+
+    /* Прогресс-бар чтения */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-gukesh), var(--accent-gold), var(--accent-sindarov));
+      transition: width 0.1s ease-out;
+    }
+
+    /* Верхняя панель управления */
+    .top-bar {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      height: 58px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 900;
+    }
+
+    .top-bar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .top-bar-brand span.badge {
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--border-gold);
+      color: var(--accent-gold);
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    .top-bar-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .ctrl-btn {
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .ctrl-btn:hover {
+      border-color: var(--accent-gold);
+      color: var(--text-primary);
+    }
+
+    /* Боковое оглавление (Desktop) */
+    .side-toc {
+      position: fixed;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 800;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      max-width: 210px;
+    }
+
+    @media (max-width: 1280px) {
+      .side-toc {
+        display: none;
+      }
+    }
+
+    .toc-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-family: 'JetBrains Mono', monospace;
+      transition: all 0.25s ease;
+      line-height: 1.3;
+    }
+
+    .toc-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border-subtle);
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+
+    .toc-item:hover,
+    .toc-item.active {
+      color: var(--text-primary);
+    }
+
+    .toc-item.active .toc-dot {
+      background: var(--accent-gold);
+      box-shadow: 0 0 8px var(--accent-gold);
+      transform: scale(1.35);
+    }
+
+    /* Обложка (Hero) */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      max-width: 1040px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--accent-gold);
+      margin-bottom: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-kicker::before,
+    .hero-kicker::after {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--border-gold);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.4rem, 5.2vw, 4.3rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.75rem;
+      color: var(--text-primary);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent-gold);
+      font-weight: 500;
+    }
+
+    .hero-lead {
+      max-width: 760px;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 2.8rem;
+      font-weight: 300;
+    }
+
+    /* Табло-тизер на обложке */
+    .match-banner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 820px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-top: 2px solid var(--accent-gold);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    @media (max-width: 680px) {
+      .match-banner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .contender-mini {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contender-mini.left {
+      text-align: left;
+    }
+
+    .contender-mini.right {
+      text-align: right;
+    }
+
+    @media (max-width: 680px) {
+      .contender-mini.left, .contender-mini.right {
+        text-align: center;
+      }
+    }
+
+    .contender-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.25rem;
+    }
+
+    .role-champ { color: var(--accent-gukesh); }
+    .role-challenger { color: var(--accent-sindarov); }
+
+    .contender-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .contender-stats {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-top: 0.35rem;
+    }
+
+    .vs-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1rem;
+      border-left: 1px solid var(--border-subtle);
+      border-right: 1px solid var(--border-subtle);
+    }
+
+    .vs-badge .location {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      margin-bottom: 0.2rem;
+    }
+
+    .vs-badge .dates {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--text-primary);
+    }
+
+    .vs-badge .sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Основной контейнер статьи */
+    main.article-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    section.chapter {
+      margin-bottom: 4.5rem;
+      scroll-margin-top: 90px;
+    }
+
+    .chapter-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-gold);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    h2.chapter-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.18;
+      margin-bottom: 1.75rem;
+      color: var(--text-primary);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    h3.sub-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin: 2.2rem 0 0.85rem;
+    }
+
+    p {
+      margin-bottom: 1.45rem;
+      color: var(--text-primary);
+    }
+
+    p strong {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    p em {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.14em;
+      font-style: italic;
+    }
+
+    /* Буквица в начале глав */
+    .dropcap::first-letter {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      float: left;
+      font-size: 4.1rem;
+      line-height: 0.82;
+      padding-top: 4px;
+      padding-right: 12px;
+      padding-bottom: 4px;
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    /* Выносные цитаты / акценты */
+    blockquote.pullquote {
+      margin: 2.4rem 0;
+      padding: 1.5rem 1.8rem;
+      background: var(--bg-secondary);
+      border-left: 3px solid var(--accent-gold);
+      border-radius: 0 6px 6px 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem;
+      line-height: 1.45;
+      font-style: italic;
+      color: var(--text-primary);
+    }
+
+    blockquote.pullquote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+    }
+
+    /* Списки внутри статьи */
+    ul.editorial-list, ol.editorial-list {
+      margin: 1.5rem 0 2rem;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .editorial-list li {
+      position: relative;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.85rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+
+    .editorial-list.gukesh-list li {
+      border-left: 3px solid var(--accent-gukesh);
+    }
+
+    .editorial-list.sindarov-list li {
+      border-left: 3px solid var(--accent-sindarov);
+    }
+
+    /* Интерактивный модуль 1: Хронология пересечения судеб */
+    .interactive-widget {
+      margin: 3rem -2.5rem;
+      padding: 2rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      box-shadow: var(--shadow-card);
+    }
+
+    @media (max-width: 820px) {
+      .interactive-widget {
+        margin: 2.5rem 0;
+        padding: 1.25rem;
+      }
+    }
+
+    .widget-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .widget-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .widget-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--accent-gold-dim);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      font-weight: 500;
+    }
+
+    /* Таймлайн */
+    .timeline-track {
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .tl-card {
+      position: relative;
+      padding: 1rem 1.25rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      transition: all 0.25s ease;
+    }
+
+    .tl-card::before {
+      content: "";
+      position: absolute;
+      left: -1.92rem;
+      top: 1.25rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+    }
+
+    .tl-card[data-player="gukesh"]::before {
+      background: var(--accent-gukesh);
+    }
+
+    .tl-card[data-player="sindarov"]::before {
+      background: var(--accent-sindarov);
+    }
+
+    .tl-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .tl-date {
+      color: var(--accent-gold);
+      font-weight: 500;
+    }
+
+    .tl-tag {
+      padding: 0.12rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.65rem;
+    }
+
+    .tl-tag.gukesh {
+      background: var(--accent-gukesh-bg);
+      color: var(--accent-gukesh);
+    }
+
+    .tl-tag.sindarov {
+      background: var(--accent-sindarov-bg);
+      color: var(--accent-sindarov);
+    }
+
+    .tl-tag.both {
+      background: var(--accent-gold-dim);
+      color: var(--accent-gold);
+    }
+
+    .tl-desc {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* Интерактивный модуль 2: Лаборатория сравнения (Глава V) */
+    .duel-panel {
+      display: none;
+    }
+
+    .duel-panel.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Таблица сравнения */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .comp-table th, .comp-table td {
+      padding: 0.85rem 0.9rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+    }
+
+    .comp-table th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+    }
+
+    .comp-table th.col-gukesh { color: var(--accent-gukesh); }
+    .comp-table th.col-sindarov { color: var(--accent-sindarov); }
+
+    .comp-table td.param-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      width: 28%;
+    }
+
+    /* Шкалы характеристик */
+    .metric-row {
+      margin-bottom: 1.25rem;
+    }
+
+    .metric-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-bar-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      height: 10px;
+      background: var(--bg-primary);
+      border-radius: 5px;
+      overflow: hidden;
+      padding: 2px;
+    }
+
+    .bar-left-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .bar-fill-gukesh {
+      height: 100%;
+      background: var(--accent-gukesh);
+      border-radius: 3px 0 0 3px;
+      transition: width 0.6s ease;
+    }
+
+    .bar-fill-sindarov {
+      height: 100%;
+      background: var(--accent-sindarov);
+      border-radius: 0 3px 3px 0;
+      transition: width 0.6s ease;
+    }
+
+    /* Симулятор часов к 30-му ходу */
+    .clock-sim {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .clock-sim {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .clock-box {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .clock-digit {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      letter-spacing: 0.05em;
+    }
+
+    .clock-digit.danger { color: var(--accent-gukesh); }
+    .clock-digit.calm { color: var(--accent-sindarov); }
+
+    .slider-wrap {
+      margin-top: 1.25rem;
+      text-align: center;
+    }
+
+    .move-slider {
+      width: 100%;
+      accent-color: var(--accent-gold);
+      cursor: pointer;
+    }
+
+    /* Разделитель глав */
+    .ornament-divider {
+      text-align: center;
+      margin: 3.5rem 0;
+      color: var(--accent-gold);
+      font-size: 1.1rem;
+      letter-spacing: 0.6em;
+      opacity: 0.65;
+    }
+
+    footer.article-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 1.5rem 5rem;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chess-grid-overlay"></div>
+
+  <!-- Индикатор чтения -->
+  <div class="progress-container">
+    <div class="progress-bar" id="readingProgress"></div>
+  </div>
+
+  <!-- Верхняя навигационная панель -->
+  <header class="top-bar">
+    <div class="top-bar-brand">
+      <span class="badge">FIDE WCC 2026</span>
+      <span>Женева · Библиотека Мартина Бодмера</span>
+    </div>
+    <div class="top-bar-controls">
+      <button class="ctrl-btn" id="fontToggle" title="Изменить размер шрифта">Аа+</button>
+      <button class="ctrl-btn" id="themeToggle" title="Переключить тему оформления">Светлая тема</button>
+    </div>
+  </header>
+
+  <!-- Боковое оглавление -->
+  <nav class="side-toc" id="sideToc">
+    <a href="#prologue" class="toc-item active"><span class="toc-dot"></span><span>Пролог. Бункер Бодмера</span></a>
+    <a href="#chapter-1" class="toc-item"><span class="toc-dot"></span><span>I. Скальпель и счёт</span></a>
+    <a href="#chapter-2" class="toc-item"><span class="toc-dot"></span><span>II. Детектив в Ташкенте</span></a>
+    <a href="#chapter-3" class="toc-item"><span class="toc-dot"></span><span>III. Крест чемпиона</span></a>
+    <a href="#chapter-4" class="toc-item"><span class="toc-dot"></span><span>IV. Год Дракона</span></a>
+    <a href="#chapter-5" class="toc-item"><span class="toc-dot"></span><span>V. Дуэль лабораторий</span></a>
+    <a href="#epilogue" class="toc-item"><span class="toc-dot"></span><span>Эпилог. Раненый король</span></a>
+  </nav>
+
+  <!-- Обложка статьи -->
+  <header class="hero">
+    <div class="hero-kicker">Специальный репортаж · 18 минут чтения</div>
+    <h1 class="hero-title">Дети двадцать первого века: как парень из Ташкента и вундеркинд из Ченнаи <em>перевернули шахматный мир</em></h1>
+    <p class="hero-lead">
+      Двадцать четвёртого ноября 2026 года в пригороде Женевы начнётся самый необычный матч за мировую шахматную корону в истории. Впервые за полтора века существования титула за доску сядут два человека, родившиеся в XXI веке. Обоим по двадцать лет. Но главная интрига кроется не в их паспортах, а в поразительном парадоксе: действующий чемпион мира Доммараджу Гукеш подходит к защите титула тридцать вторым номером мирового рейтинга, а его ровесник из Узбекистана Жавохир Синдаров — в статусе безоговорочного фаворита и самого опасного хищника планеты.
+    </p>
+
+    <div class="match-banner">
+      <div class="contender-mini left">
+        <span class="contender-role role-champ">Действующий чемпион мира</span>
+        <div class="contender-name">Доммараджу Гукеш</div>
+        <div class="contender-stats">Индия · 20 лет · Эло 2703 (#32)</div>
+      </div>
+      <div class="vs-badge">
+        <span class="location">Колоньи, Женева</span>
+        <span class="dates">24 ноября — 12 декабря 2026</span>
+        <span class="sub">14 партий · Фонд $2,5 млн</span>
+      </div>
+      <div class="contender-mini right">
+        <span class="contender-role role-challenger">Победитель Претендентов</span>
+        <div class="contender-name">Жавохир Синдаров</div>
+        <div class="contender-stats">Узбекистан · 20 лет · Эло 2778 (#4)</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Основной текст статьи -->
+  <main class="article-wrapper">
+
+    <!-- ПРОЛОГ -->
+    <section class="chapter" id="prologue">
+      <span class="chapter-meta">Пролог · Координаты битвы</span>
+      <h2 class="chapter-title">Подземный храм на берегу Лемана</h2>
+
+      <p class="dropcap">Если вы выедете из центра Женевы на восток вдоль южного берега озера Леман и подниметесь на тихий зелёный холм коммуны Колоньи, вы окажетесь в месте, где плотность человеческого гения на квадратный метр превышает любые разумные пределы. В двух шагах отсюда находится вилла Диодати, где дождливым летом 1816 года лорд Байрон, Перси Шелли и восемнадцатилетняя Мэри Шелли от скуки придумали современную готическую литературу и миф о Франкенштейне. А чуть поодаль, глубоко под землёй, скрывается <em>Fondation Martin Bodmer</em> — Библиотека Мартина Бодмера, спроектированная знаменитым швейцарским архитектором Марио Боттой.</p>
+
+      <p>Это не просто музей, а подземный бункер цивилизации. В полумраке его сводчатых залов под пуленепробиваемым стеклом лежат папирусы «Книги мёртвых», единственная в Швейцарии Библия Гутенберга, прижизненный фолиант Шекспира, черновики «Фауста» Гёте и математические рукописи Исаака Ньютона. Мартин Бодмер, потративший полжизни на создание этого «пантеона мирового духа», стремился собрать под одной крышей все тексты, которые изменили траекторию человеческого мышления.</p>
+
+      <p>С 24 ноября по 12 декабря 2026 года в этом святилище будет написан новый текст — из четырнадцати глав, на языке алгебраической шахматной нотации.</p>
+
+      <p>Когда FIDE в конце лета объявила, что матч за звание чемпиона мира примет Женева (обойдя заявки из Индии, США и с Кипра), мир шахмат оценил историческую рифму: большой титульный матч возвращается в Швейцарию впервые с 2004 года, когда Владимир Крамник в драматичном последнем туре в Бриссаго вырвал ничью в матче с Петером Леко и сохранил корону. В 2004 году ни один из нынешних соперников ещё не появился на свет.</p>
+
+      <p>В полдень 24 ноября (в 15:00 по среднеевропейскому времени) в зале Бодмера друг напротив друга сядут два двадцатилетних юноши: индиец Доммараджу Гукеш и узбек Жавохир Синдаров. Суммарный возраст участников — 40 лет (Синдарову исполнится 21 прямо по ходу матча, 8 декабря, в день двенадцатой партии). Прежний возрастной рекорд продержался всего два года, а до того — почти сорок лет, со времён первого поединка Карпова и Каспарова в 1984-м. Старая гвардия — Карлсен, Накамура, Каруана, Непомнящий — окончательно осталась за бортом титульного цикла. Эпоха поколения Z вступила в свои полные права.</p>
+
+      <p>Но если бы вы заснули в декабре 2024 года — в тот вечер, когда 18-летний Гукеш в Сингапуре рыдал, уткнувшись лицом в ладони после рокового зевка Дин Лижэня в четырнадцатой партии, — и проснулись только сегодня, в октябре 2026-го, вы бы ни за что не поверили таблице коэффициентов перед женевским матчем.</p>
+
+      <p>Взгляните на сентябрьский рейтинг-лист FIDE 2026 года. Напротив имени претендента Жавохира Синдарова горит внушительная цифра <strong>2778</strong> — четвёртая строчка мирового рейтинга, серия из 45 классических партий на элитном уровне с двумя поражениями и космическим перформансом 2837 в первой половине года. А чтобы найти действующего чемпиона мира, вам придётся прокрутить страницу далеко вниз. Ещё ниже. Мимо первой десятки, мимо двадцатки, на самое дно четвёртого десятка. <strong>32-е место в мире. Рейтинг 2703.</strong> Разница между претендентом и чемпионом составляет 75 пунктов Эло в пользу претендента — случай, не имеющий аналогов в современной истории классических матчей за корону.</p>
+
+      <p>Как мальчик, ставший живым божеством полуторамиллиардной Индии, оказался в глубочайшей психологической яме? И как парень из Ташкента, которого ещё четыре года назад списывали со счетов из-за пристрастия к компьютерным шутерам, превратился в самую совершенную и хладнокровную машину мировых шахмат? Чтобы понять природу этой женевской бури, нужно вернуться к истокам обеих рек.</p>
+    </section>
+
+    <div class="ornament-divider">✦ ✦ ✦</div>
+
+    <!-- ГЛАВА I -->
+    <section class="chapter" id="chapter-1">
+      <span class="chapter-meta">Глава I · Ченнаи</span>
+      <h2 class="chapter-title">Скальпель хирурга и мальчик без компьютера</h2>
+
+      <p class="dropcap">В истории индийских шахмат есть священная география, и её столица — Ченнаи. В этом душном, гудящем от мотороллеров мегаполисе на берегу Бенгальского залива шахматы давно перестали быть просто настольной игрой. Благодаря Вишванатану Ананду они стали социальным лифтом, национальной религией и точной наукой.</p>
+
+      <p>Доммараджу Гукеш родился здесь 29 мая 2006 года в семье классической южноиндийской интеллигенции. Его отец, доктор Раджиникант, был успешным практикующим ЛОР-хирургом; мать, Падма Кумари, работала микробиологом в медицинском колледже. В семь лет Гукеша записали в школьный шахматный кружок просто для того, чтобы занять гиперактивного ребёнка на час три раза в неделю. Через полгода учителя развели руками и сказали родителям, что мальчика нужно показывать серьёзным специалистам.</p>
+
+      <p>Когда Гукешу исполнилось одиннадцать и он вплотную подобрался к гроссмейстерским баллам, семья столкнулась с жестокой арифметикой профессионального спорта. Чтобы выполнить три нормы гроссмейстера в рекордные сроки, нужно было летать из страны в страну без перерыва: Франция, Испания, Сербия, Вьетнам, Россия. Спонсоров не было. И тогда доктор Раджиникант принял решение, которое в традиционном индийском обществе граничило с безумием: он положил скальпель на полку, закрыл свою врачебную практику и стал полноправным менеджером, логистом, поваром и телохранителем сына.</p>
+
+      <p>Все финансовые заботы легли на плечи матери, работавшей в лаборатории за двоих. На протяжении 2017 и 2018 годов отец и сын жили как кочевники. Они спали на полу в транзитных зонах аэропортов, экономили на такси, ходили пешком по нескольку километров под дождём с тяжёлыми рюкзаками и питались рисом из электрической рисоварки, которую Раджиникант возил с собой в чемодане из отеля в отель. Гукеш видел эту жертву каждый день. В его характере с детства не было места инфантилизму: когда твой отец ставит на кон свою карьеру, а друзья семьи собирают деньги вскладчину на твои авиабилеты, ты не имеешь права воспринимать шахматы как развлечение.</p>
+
+      <p>Но была в формировании Гукеша ещё одна деталь, определившая его уникальную шахматную ДНК. В 2017 году его тренером стал гроссмейстер Вишну Прасанна. Посмотрев на то, как юные таланты по всему миру бездумно зазубривают бесконечные компьютерные линии <em>Stockfish</em>, Прасанна пошёл на радикальный педагогический эксперимент. Он <strong>запретил Гукешу пользоваться шахматными движками</strong>.</p>
+
+      <p>Пока его сверстники нажимали пробел в <em>ChessBase</em>, чтобы мгновенно узнать оценку позиции («+0.45» или «-1.20»), одиннадцатилетний Гукеш часами сидел над деревянной доской с блокнотом. Если он хотел понять, работает ли жертва пешки на шестнадцатом ходу, ему приходилось просчитывать разветвлённое дерево вариантов собственной головой до самого эндшпиля. Это правило действовало вплоть до того момента, когда рейтинг Гукеша перевалил за отметку 2500 и он стал гроссмейстером в январе 2019 года (в 12 лет, 7 месяцев и 17 дней — уступив мировому рекорду Сергея Карякина всего 17 дней).</p>
+
+      <p>Этот «аналоговый» фундамент породил монстра счёта. Попав позже в элитную академию <em>WestBridge Anand Chess Academy</em> (WACA) под крыло самого Виши Ананда и начав работать с польским дебютным теоретиком Гжегожем Гаевским, Гукеш сохранил свою первородную особенность. Его стиль — это тотальный, вязкий, бескомпромиссный прагматизм счёта. Он не верит в абстрактные понятия «красивой структуры» или «компенсации по общим соображениям», если они не подтверждаются конкретным вариантом из двенадцати ходов.</p>
+
+      <p>В 2024 году этот метод принёс ему бессмертие. Сначала 17-летний юноша с бородкой мудреца шокировал планету на Турнире претендентов в Торонто, хладнокровно перешагнув через Каруану, Накамуру и Непомнящего. А в декабре 2024 года в Сингапуре он в четырнадцати партиях измотал Дин Лижэня. Китайский чемпион сопротивлялся отчаянно, сушил игру, уводил борьбу в вязкие равные окончания, но Гукеш давил в каждой партии до голых королей — пока на 55-м ходу решающей, четырнадцатой партии нервы Дина не лопнули, и он не пошёл ладьёй на проклятое поле f2, подставив слона в глухом углу доски.</p>
+
+      <p>В восемнадцать лет Доммараджу Гукеш стал восемнадцатым и самым молодым чемпионом мира в истории. Казалось, что впереди — десятилетие безоговорочного доминирования. Никто тогда не догадывался, насколько тяжёлой окажется эта корона.</p>
+    </section>
+
+    <div class="ornament-divider">✦ ✦ ✦</div>
+
+    <!-- ГЛАВА II -->
+    <section class="chapter" id="chapter-2">
+      <span class="chapter-meta">Глава II · Ташкент</span>
+      <h2 class="chapter-title">Детективный роман Комила Синдарова и перезагрузка в Ташкенте</h2>
+
+      <p class="dropcap">За две с половиной тысячи километров к северу от Ченнаи, в солнечном Ташкенте, на полгода раньше Гукеша — 8 декабря 2005 года — родился мальчик, которому при рождении дали имя Жавохир. На узбекском языке <em>«Жавохир»</em> означает «драгоценный камень», «самоцвет».</p>
+
+      <p>Если Гукеш был продуктом аскетичной, почти монастырской дисциплины семьи врачей, то Жавохир вырос в стихии большой, шумной семьи, пропитанной интригой, сюжетами и психологией. В четыре с половиной года за шахматную доску его усадил родной дед по отцовской линии — Комил Синдаров. Личность деда заслуживает отдельного романа: доктор юридических наук, ветеран органов прокуратуры, вице-президент Федерации шахмат Узбекистана и при этом — один из самых популярных в стране авторов детективной прозы, написавший десятки книг о запутанных расследованиях.</p>
+
+      <blockquote class="pullquote">
+        «У каждого хода соперника есть скрытый мотив. Найди улику в его построении, пойми, чего он боится, и устрой засаду там, где он считает себя в безопасности».
+        <cite>Принцип домашней школы Комила Синдарова</cite>
+      </blockquote>
+
+      <p>У Жавохира три младших брата (один из них, Исломбек, тоже стал сильным шахматистом), и атмосфера постоянного домашнего соперничества с первых лет закалила в нём бойцовский темперамент.</p>
+
+      <p>Талант мальчика развивался со сверхзвуковой скоростью. В 11 лет он уже международный мастер. В 2018 году двенадцатилетний Жавохир берёт гроссмейстерские баллы один за другим: в июне на Мемориале Алехина в Воронеже, в сентябре на чемпионате мира среди юниоров (где он забирает серебро и пробивает рейтинг 2500), и в октябре 2018-го на турнире <em>First Saturday</em> в Будапеште оформляет последнюю, третью норму. На тот момент ему было <strong>12 лет, 10 месяцев и 8 дней</strong> — второй показатель в мировой истории после Карякина (Гукеш опередит Жавохира на два с половиной месяца всего через квартал, в январе 2019-го).</p>
+
+      <p>А затем в биографии Синдарова случился эпизод, который делает его образ удивительно живым и близким любому представителю его поколения. Став гроссмейстером в двенадцать лет, Жавохир... устал от шахмат.</p>
+
+      <p>В 14–15 лет, когда мир накрыла пандемия и турниры ушли в онлайн, подросток из Ташкента открыл для себя <em>Counter-Strike</em>. По его собственным позднейшим признаниям, он мог рубиться в шутер по шесть-восемь часов в сутки напролёт, откладывая дебютные файлы в долгий ящик. Его рейтинг застыл в районе 2540–2550. В это время его старший товарищ по сборной Нодирбек Абдусатторов и индийские сверстники во главе с Гукешем и Праггнанандхой стремительно уходили в отрыв, штурмуя отметку 2700. В шахматных кулуарах о Синдарове начали говорить в прошедшем времени: мол, ещё один ранний вундеркинд, перегоревший на переходе во взрослый спорт.</p>
+
+      <p>Перелом наступил в 2021 году. Жавохир удалил игры, закрыл лишние вкладки и начал системную работу с известным тренером и теоретиком, международным мастером Романом Видоняком. Видоняк сразу увидел то, чего не замечали скептики: за внешней лёгкостью Синдарова скрывался редчайший, природный дар «гармонии фигур» и феноменальная скорость принятия решений в критических ситуациях.</p>
+
+      <p>Пружина разжалась мгновенно. Летом 2021 года на Кубке мира в Сочи 15-летний Синдаров, посеянный под скромным 121-м номером, во втором круге попадает на восьмого номера посева и главного вундеркинда планеты Алирезу Фирузджу (рейтинг 2759) — и на тай-брейке хладнокровно выбивает его из турнира! Через год, в августе 2022-го, именно на родине Гукеша в Ченнаи молодая сборная Узбекистана (Абдусатторов, Якуббоев, Синдаров, Вахидов, Вохидов) творит главную сенсацию XXI века, выигрывая золото Всемирной шахматной Олимпиады без единого командного поражения.</p>
+
+      <p>После Ченнаи-2022 в Узбекистане начался настоящий шахматный ренессанс, поддержанный на высшем государственном уровне. Но для самого Жавохира существовал ещё один мощный внутренний триггер: внутри страны первой скрипкой и главной звездой считался Нодирбек Абдусатторов — чемпион мира по рапиду, игрок топ-5 мирового рейтинга. Синдарова часто воспринимали как «надёжного третьего-четвёртого номера золотой дружины». И это задевало его самолюбие куда сильнее любых оценок зарубежных экспертов.</p>
+
+      <p>В 2023 году на Кубке мира он выбивает Максима Вашье-Лаграва, на Grand Swiss побеждает Левона Ароняна и впервые пробивает гроссмейстерский барьер 2700. А в июне 2024 года на домашнем супертурнире <em>UzChess Cup</em> в Ташкенте Синдаров наносит символическое поражение самому Абдусатторову. Из тени талантливого юниора выходил взрослый, абсолютно бесстрашный хищник.</p>
+    </section>
+
+    <div class="ornament-divider">✦ ✦ ✦</div>
+
+    <!-- ГЛАВА III -->
+    <section class="chapter" id="chapter-3">
+      <span class="chapter-meta">Глава III · Анатомия спада</span>
+      <h2 class="chapter-title">Крест чемпиона: что случилось с Гукешем в 2025–2026 годах?</h2>
+
+      <p class="dropcap">В шахматной истории есть мрачная закономерность: восхождение на Эверест иногда забирает у альпиниста столько кислорода и нервных клеток, что на самой вершине начинается высотная болезнь.</p>
+
+      <p>В 2023 году мы видели это на примере Дин Лижэня. Выиграв матч у Яна Непомнящего в Астане, китайский гроссмейстер признался, что внутри него «будто погас свет», после чего полтора года не мог выиграть ни одной классической партии у элиты. Когда в декабре 2024-го юный, пышущий энергией Гукеш отобрал у Дина титул в Сингапуре, все были уверены: уж с восемнадцатилетним фанатиком шахмат из Ченнаи такого точно не произойдёт.</p>
+
+      <p>Оказалось — может произойти, только по совершенно другой причине.</p>
+
+      <p>Дин Лижэнь сломался от эмоционального выгорания и сомнений в себе. Гукеш попал в ловушку <strong>гиперответственности и тотальной изученности</strong>. После Сингапура на его плечи легла тяжесть ожиданий полуторамиллиардной нации. Бесконечные приёмы у премьер-министра, многотысячные стадионы в Ченнаи, рекламные контракты, статус национального идола — и параллельно с этим жестокая реальность: теперь каждый супергроссмейстер мира выходил на партию против него как на главный бой своей жизни.</p>
+
+      <p>Стиль Гукеша всегда был экстремально энергозатратным. Выходить из дебюта в неясную позицию, сжигать за собой мосты, тратить по полтора часа на первые двадцать ходов и затем на флажке, на тридцатисекундном добавлении, пересчитывать соперника в диких осложнениях — этот метод работал безотказно, когда Гукеш был голодным претендентом. Но когда за два года твои партии под микроскопом разобрали все аналитические бригады мира, соперники научились бить в его уязвимые точки.</p>
+
+      <p>Его стали сознательно заманивать в иррациональные, полукорректные позиции с нарушенным материальным балансом, где чистый конкретный счёт буксует из-за слишком большого числа переменных, а нужна мгновенная, лёгкая интуиция и экономия времени.</p>
+
+      <p>Первые тревожные звонки прозвучали осенью 2025 года: в октябре чемпион мира впервые выпал из топ-10 рейтинга FIDE, а в ноябре на домашнем Кубке мира в Гоа сенсационно вылетел на ранней стадии. Но настоящая катастрофа разразилась в 2026 году.</p>
+
+      <ul class="editorial-list gukesh-list">
+        <li><strong>Март 2026, Прага (Prague Chess Festival Masters):</strong> Гукеш проводит худший турнир в своей взрослой карьере. Ни одной победы в десяти турах. Три поражения в четырёх партиях на середине дистанции — дважды от Йордена ван Фореста, от Нодирбека Абдусатторова и чёрными от соотечественника Аравинда Читамбарама. Итог: 3,5 очка из 10, делёж последнего места и перформанс на уровне 2540. Шахматные порталы выходили с безжалостными заголовками: <em>«Что, чёрт возьми, происходит с Гукешем?»</em> В конце марта чемпион объявил, что вынужден сняться с длинных этапов серии <em>Grand Chess Tour</em>, заявив: <em>«В моих лучших интересах сейчас пропустить затяжные турниры»</em>.</li>
+        <li><strong>Июль 2026, Ченнаи (Chennai Grand Masters):</strong> Попытка перезагрузиться перед родными трибунами обернулась новым кошмаром. Гукеш упускал выигранные позиции, зевал тактические удары на ровном месте и по итогам турнира рухнул на <strong>31–32-ю строчку мирового рейтинга с отметкой 2703</strong> (потеряв более 90 пунктов со своего исторического пика 2794 в октябре 2024 года). Формально по позиции в табели о рангах (№32 в мире) он стал самым низкоранжированным действующим классическим чемпионом мира за всю историю системы Эло.</li>
+        <li><strong>Сентябрь 2026, Самарканд (Всемирная шахматная Олимпиада):</strong> На первой доске сборной Индии Гукеш долгое время держался без поражений, демонстрируя проблески прежней магии (в 9-м туре пресса писала, что он «исполнил трюк Гудини», вытащив безнадёжную партию и сохранив Индию в гонке за золото). Но в решающем, одиннадцатом туре в матче с Венгрией он потерпел болезненное поражение от Глеба Дудина; Индия с трудом удержала серебро лишь по дополнительным показателям, уступив чемпионский титул хозяевам турнира — сборной Узбекистана.</li>
+      </ul>
+
+      <p>А во главе той самой золотой сборной Узбекистана в Самарканде стоял человек, с которым Гукешу через месяц предстоит встретиться с глазу на глаз в Женеве.</p>
+    </section>
+
+    <div class="ornament-divider">✦ ✦ ✦</div>
+
+    <!-- ГЛАВА IV -->
+    <section class="chapter" id="chapter-4">
+      <span class="chapter-meta">Глава IV · Взлёт претендента</span>
+      <h2 class="chapter-title">Год Дракона из Ташкента: как Синдаров взломал цикл</h2>
+
+      <p class="dropcap">Пока чемпион мира боролся с собственными демонами, Жавохир Синдаров провёл двенадцать месяцев (с осени 2025 по осень 2026 года), которые по своей мощи и безошибочности напоминают легендарные серии Бобби Фишера или молодого Магнуса Карлсена.</p>
+
+      <p>Всё началось в ноябре 2025 года в индийском Гоа, где проходил Кубок мира FIDE. Ирония судьбы: турнир на индийской земле должен был стать триумфом хозяев, но Гукеш и другие фавориты сошли с дистанции рано, а 16-й сеяный Синдаров включил свой фирменный режим нокаут-терминатора. Он последовательно выбил Юй Янъи, Фредерика Сване и Хосе Мартинеса Алькантару. В полуфинале в узбекском дерби на тай-брейке переиграл соотечественника, а в финале сошёлся с китайским гением Вэй И.</p>
+
+      <p>Финал Кубка мира превратился в триллер: две классические партии вничью, первая партия рапида вничью — и во второй быстрой партии Синдаров наносит решающий удар, становясь в 19 лет и 11 месяцев самым молодым победителем Кубка мира в истории и забирая путёвку в Турнир претендентов.</p>
+
+      <p>И всё же, когда в конце марта 2026 года восемь претендентов собрались в роскошном отеле <em>Cap St Georges</em> в кипрской Пейе, букмекеры не ставили Синдарова в первый ряд фаворитов. В турнире играли матерые волки: Фабиано Каруана (2795), Хикару Накамура (2810), Аниш Гири (2753), Вэй И (2754), Рамешбабу Праггнанандха (2741), Андрей Есипенко и Маттиас Блюбаум. От 20-летнего дебютанта из Узбекистана (стартовый рейтинг 2745) ждали крепкого места в середине таблицы.</p>
+
+      <p>То, что устроил Синдаров на Кипре с 28 марта по 16 апреля 2026 года, вошло в учебники шахматной истории:</p>
+
+      <ol class="editorial-list sindarov-list">
+        <li><strong>1. Ураганный старт:</strong> Жавохир начинает турнир с 3,5 очков из 4 возможных, причём в четвёртом туре в доминирующем стиле разбирает главного фаворита турнира Фабиано Каруану.</li>
+        <li><strong>2. Удар по конкуренту:</strong> В шестом туре он чёрными фигурами побеждает Вэй И, отрываясь от пелотона на полтора очка.</li>
+        <li><strong>3. Железобетонная защита:</strong> Во втором круге, когда Каруана в ответной партии бросает на него всю мощь своей домашней лаборатории, Синдаров демонстрирует филигранную, холодную защиту, удерживая ничью там, где сломались бы девять гроссмейстеров из десяти.</li>
+        <li><strong>4. Досрочный триумф:</strong> В тринадцатом туре, сыграв вничью с шедшим на втором месте Анишем Гири, Синдаров выигрывает Турнир претендентов <strong>за тур до финиша</strong>. Его итоговый результат — <strong>10 очков из 14 (+6 -0 =8)</strong> — стал абсолютным рекордом Турниров претендентов современного формата (превзойдя 9,5 очков Непомнящего в Мадриде-2022).</li>
+      </ol>
+
+      <p>У кипрского триумфа была и красивая кинематографическая подсветка: в том же зале в Пейе параллельно проходил женский Турнир претенденток, где сражалась возлюбленная Жавохира — трёхкратная чемпионка мира по блицу из Казахстана Бибисара Асаубаева (она в итоге завоевала серебро). Два молодых гроссмейстера поддерживали друг друга между турами, превратив самый нервный турнир цикла в совместный бенефис. По возвращении в Ташкент в апреле 2026 года президент Узбекистана Шавкат Мирзиёев наградил Синдарова орденом «Мехнат шухрати» («Трудовая слава»).</p>
+
+      <p>А в сентябре 2026-го Жавохир поставил восклицательный знак перед поездкой в Женеву: на домашней 46-й Всемирной Олимпиаде в древнем Самарканде он вновь прошёл всю дистанцию без единого поражения, приведя Узбекистан ко второму олимпийскому золоту и оставив команду Гукеша с серебряными медалями. В четырёх главных классических стартах 2026 года его сводный баланс составил невероятные <strong>+14 -2 =29</strong> (45 партий) с перформансом <strong>2837</strong> и первым местом в зачёте <em>FIDE Circuit</em>.</p>
+
+      <!-- ИНТЕРАКТИВНЫЙ ВИДЖЕТ 1: Хронология пересечения траекторий -->
+      <div class="interactive-widget">
+        <div class="widget-header">
+          <div>
+            <div class="widget-subtitle">Интерактивная хроника</div>
+            <div class="widget-title">Траектории судеб: 2022–2026</div>
+          </div>
+          <div class="filter-tabs" id="timelineFilters">
+            <button class="tab-btn active" data-filter="all">Все события</button>
+            <button class="tab-btn" data-filter="gukesh">Доммараджу Гукеш</button>
+            <button class="tab-btn" data-filter="sindarov">Жавохир Синдаров</button>
+          </div>
+        </div>
+
+        <div class="timeline-track" id="timelineTrack">
+          <div class="tl-card" data-player="sindarov">
+            <div class="tl-meta">
+              <span class="tl-date">Май 2022 · Шарджа</span>
+              <span class="tl-tag sindarov">Первая дуэль</span>
+            </div>
+            <p class="tl-desc">На турнире Sharjah Masters 16-летний Синдаров чёрными фигурами громит Гукеша — единственная результативная классическая партия между ними по сей день.</p>
+          </div>
+
+          <div class="tl-card" data-player="both">
+            <div class="tl-meta">
+              <span class="tl-date">Август 2022 · Ченнаи</span>
+              <span class="tl-tag both">Олимпиада-2022</span>
+            </div>
+            <p class="tl-desc">Гукеш показывает космическую игру на первой доске Индии-2, но командное золото в его родном городе увозит сборная Узбекистана с Синдаровым в составе.</p>
+          </div>
+
+          <div class="tl-card" data-player="gukesh">
+            <div class="tl-meta">
+              <span class="tl-date">Апрель — Декабрь 2024 · Торонто и Сингапур</span>
+              <span class="tl-tag gukesh">Вершина Гукеша</span>
+            </div>
+            <p class="tl-desc">Гукеш выигрывает Турнир претендентов в 17 лет, достигает пикового рейтинга 2794 и в декабре побеждает Дин Лижэня (7,5:6,5), становясь самым молодым чемпионом мира.</p>
+          </div>
+
+          <div class="tl-card" data-player="sindarov">
+            <div class="tl-meta">
+              <span class="tl-date">Ноябрь 2025 · Гоа, Индия</span>
+              <span class="tl-tag sindarov">Кубок мира FIDE</span>
+            </div>
+            <p class="tl-desc">Пока Гукеш рано вылетает на домашнем турнире, Синдаров побеждает в финале Вэй И и становится самым молодым триумфатором Кубка мира в истории.</p>
+          </div>
+
+          <div class="tl-card" data-player="gukesh">
+            <div class="tl-meta">
+              <span class="tl-date">Март 2026 · Прага</span>
+              <span class="tl-tag gukesh">Пражский кризис</span>
+            </div>
+            <p class="tl-desc">3,5 из 10 без единой победы на Prague Masters. Чемпион мира снимается с серии Grand Chess Tour, чтобы уйти на закрытые сборы.</p>
+          </div>
+
+          <div class="tl-card" data-player="sindarov">
+            <div class="tl-meta">
+              <span class="tl-date">Апрель 2026 · Пейя, Кипр</span>
+              <span class="tl-tag sindarov">Рекорд Претендентов</span>
+            </div>
+            <p class="tl-desc">Синдаров выигрывает Турнир претендентов за тур до конца с историческим рекордом 10 из 14 (+6 -0 =8), обыграв по ходу дистанции Каруану и Вэй И.</p>
+          </div>
+
+          <div class="tl-card" data-player="both">
+            <div class="tl-meta">
+              <span class="tl-date">Сентябрь 2026 · Самарканд</span>
+              <span class="tl-tag both">Генеральная репетиция</span>
+            </div>
+            <p class="tl-desc">Синдаров без поражений приводит Узбекистан к золоту домашней Олимпиады; Индия во главе с Гукешем остаётся с серебром после осечки чемпиона в 11-м туре.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider">✦ ✦ ✦</div>
+
+    <!-- ГЛАВА V -->
+    <section class="chapter" id="chapter-5">
+      <span class="chapter-meta">Глава V · Шахматный рентген</span>
+      <h2 class="chapter-title">Дуэль лабораторий: чистый счёт против контролируемого времени</h2>
+
+      <p class="dropcap">Если отбросить магию цифр и взглянуть строго на 64 клетки, почему предстоящий матч в Женеве вызывает такой трепет у профессионалов? Потому что Гукеш и Синдаров — это столкновение двух диаметрально противоположных способов работы человеческого мозга за шахматной доской.</p>
+
+      <!-- ИНТЕРАКТИВНЫЙ ВИДЖЕТ 2: Аналитическое досье и симулятор часов -->
+      <div class="interactive-widget">
+        <div class="widget-header">
+          <div>
+            <div class="widget-subtitle">Тактический профайлинг</div>
+            <div class="widget-title">Анатомия противостояния</div>
+          </div>
+          <div class="filter-tabs" id="duelTabs">
+            <button class="tab-btn active" data-target="panel-table">Сводная таблица</button>
+            <button class="tab-btn" data-target="panel-metrics">Оси стиля</button>
+            <button class="tab-btn" data-target="panel-clock">Фактор часов</button>
+          </div>
+        </div>
+
+        <!-- Вкладка 1: Полная таблица из статьи -->
+        <div class="duel-panel active" id="panel-table">
+          <div style="overflow-x: auto;">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>Параметр сравнения</th>
+                  <th class="col-gukesh">Доммараджу Гукеш (Чемпион)</th>
+                  <th class="col-sindarov">Жавохир Синдаров (Претендент)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="param-name">Дата и место рождения</td>
+                  <td>29 мая 2006 (20 лет), Ченнаи, Индия</td>
+                  <td>8 декабря 2005 (20 лет), Ташкент, Узбекистан</td>
+                </tr>
+                <tr>
+                  <td class="param-name">Рейтинг и ранг (осень 2026)</td>
+                  <td><strong>2703</strong> (№32 в мире; пик — 2794 в 10.2024)</td>
+                  <td><strong>2778</strong> (№4 в мире; перформанс 2026 г. — 2837)</td>
+                </tr>
+                <tr>
+                  <td class="param-name">Счёт личных встреч</td>
+                  <td>Классика: <strong>+0 -1 =2</strong> (Рапид/блиц: +1 -2)</td>
+                  <td>Классика: <strong>+1 -0 =2</strong> (Рапид/блиц: +2 -1)</td>
+                </tr>
+                <tr>
+                  <td class="param-name">Главный тренер / секундант</td>
+                  <td>Гжегож Гаевский (Польша)</td>
+                  <td>Роман Видоняк (Германия)</td>
+                </tr>
+                <tr>
+                  <td class="param-name">Доминирующий метод игры</td>
+                  <td>Сверхглубокий конкретный счёт вариантов, затяжное маневрирование в нестандартных структурах</td>
+                  <td>Динамическое давление, тотальная дебютная подготовка, темповая игра на время</td>
+                </tr>
+                <tr>
+                  <td class="param-name">Тайм-менеджмент</td>
+                  <td>Хронические глубокие цейтноты в районе 25–40 ходов</td>
+                  <td>Феноменальная скорость игры, использование часов как оружия давления</td>
+                </tr>
+                <tr>
+                  <td class="param-name">Козырь в матче</td>
+                  <td>Опыт 14-партийного матча на первенство мира (Сингапур-2024), умение держать удар на длинной дистанции</td>
+                  <td>Идеальная психологическая форма, перевес в скорости и на тай-брейке (рапид/блиц)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Вкладка 2: Оси стиля -->
+        <div class="duel-panel" id="panel-metrics">
+          <div class="metric-row">
+            <div class="metric-labels">
+              <span style="color:var(--accent-gukesh)">Гукеш: 98/100</span>
+              <span>Глубина чистого расчёта вариантов</span>
+              <span style="color:var(--accent-sindarov)">Синдаров: 92/100</span>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="bar-left-container"><div class="bar-fill-gukesh" style="width: 98%"></div></div>
+              <div><div class="bar-fill-sindarov" style="width: 92%"></div></div>
+            </div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-labels">
+              <span style="color:var(--accent-gukesh)">Гукеш: 64/100</span>
+              <span>Управление временем (тайм-менеджмент)</span>
+              <span style="color:var(--accent-sindarov)">Синдаров: 96/100</span>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="bar-left-container"><div class="bar-fill-gukesh" style="width: 64%"></div></div>
+              <div><div class="bar-fill-sindarov" style="width: 96%"></div></div>
+            </div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-labels">
+              <span style="color:var(--accent-gukesh)">Гукеш: 72/100</span>
+              <span>Текущая психологическая устойчивость (2026)</span>
+              <span style="color:var(--accent-sindarov)">Синдаров: 97/100</span>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="bar-left-container"><div class="bar-fill-gukesh" style="width: 72%"></div></div>
+              <div><div class="bar-fill-sindarov" style="width: 97%"></div></div>
+            </div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-labels">
+              <span style="color:var(--accent-gukesh)">Гукеш: 95/100</span>
+              <span>Опыт затяжных 14-партийных матчей</span>
+              <span style="color:var(--accent-sindarov)">Синдаров: 75/100</span>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="bar-left-container"><div class="bar-fill-gukesh" style="width: 95%"></div></div>
+              <div><div class="bar-fill-sindarov" style="width: 75%"></div></div>
+            </div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-labels">
+              <span style="color:var(--accent-gukesh)">Гукеш: 78/100</span>
+              <span>Опасность на тай-брейке (Рапид / Блиц)</span>
+              <span style="color:var(--accent-sindarov)">Синдаров: 95/100</span>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="bar-left-container"><div class="bar-fill-gukesh" style="width: 78%"></div></div>
+              <div><div class="bar-fill-sindarov" style="width: 95%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Вкладка 3: Интерактивный симулятор часов -->
+        <div class="duel-panel" id="panel-clock">
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:1rem;">
+            Передвигайте ползунок номера хода (с 1-го по 40-й ход до первого контроля времени), чтобы увидеть типичный профиль расхода 120 стартовых минут Гукешем и Синдаровым в сложной борьбе:
+          </p>
+          <div class="clock-sim">
+            <div class="clock-box">
+              <div class="widget-subtitle" style="color:var(--accent-gukesh)">Часы Гукеша</div>
+              <div class="clock-digit danger" id="gukeshClock">01:45:00</div>
+              <div style="font-size:0.78rem; color:var(--text-secondary)" id="gukeshStatus">Выход из дебюта, начало глубокого погружения</div>
+            </div>
+            <div class="clock-box">
+              <div class="widget-subtitle" style="color:var(--accent-sindarov)">Часы Синдарова</div>
+              <div class="clock-digit calm" id="sindarovClock">01:54:00</div>
+              <div style="font-size:0.78rem; color:var(--text-secondary)" id="sindarovStatus">Мгновенное воспроизведение домашней линии</div>
+            </div>
+          </div>
+          <div class="slider-wrap">
+            <label for="moveRange" style="font-family:'JetBrains Mono', monospace; font-size:0.8rem; display:block; margin-bottom:0.4rem;">
+              Ход партии: <strong id="moveLabel" style="color:var(--accent-gold)">10-й ход</strong> (контроль на 40-м ходу без добавления)
+            </label>
+            <input type="range" id="moveRange" class="move-slider" min="5" max="40" step="5" value="10">
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-title">1. Война с часами</h3>
+      <p>Самое опасное несовпадение для Гукеша кроется в контроле времени (120 минут на 40 ходов без добавления, и лишь с 41-го хода — плюс 30 минут и 30 секунд на ход). Гукеш — перфекционист расчёта. В сложной позиции на 18-м ходу он способен погрузиться в 35-минутное раздумье, перебирая десятки побочных веток, чтобы найти единственный объективно сильнейший ход. Из-за этого к 30-му ходу он почти всегда подходит с пятью-семью минутами на часах.</p>
+
+      <p>Синдаров устроен совершенно иначе. Как отмечает его тренер Роман Видоняк, у Жавохира врождённое чувство гармонии и мгновенная оценка динамики. На Турнире претендентов в Пейе он неоднократно демонстрировал пугающий паттерн: в головоломной позиции с кучей фигур на доске Синдаров делает сильный, обязывающий ход за полторы-две минуты, встаёт из-за столика с чашкой чая и спокойно прогуливается по залу, пока его соперник сжигает по сорок минут, пытаясь разгадать, домашняя ли это заготовка или блеф за доской. Психологическое давление тикающих часов против Синдарова сокрушало даже Каруану.</p>
+
+      <h3 class="sub-title">2. Закулисье: Гаевский против Видоняка</h3>
+      <p>Матчи на первенство мира выигрываются в тишине компьютерных кластеров за три месяца до первого хода. Во главе штаба Синдарова стоит Роман Видоняк — один из самых методичных и технологически продвинутых аналитиков современности (в прошлом работавший с Владимиром Крамником и Левоном Ароняном). На Кипре дебютное прогнозирование штаба Синдарова граничило с телепатией: в нескольких ключевых партиях Жавохир угадывал выбор соперников вплоть до глубокого эндшпиля. Как сказал сам Синдаров весной 2026-го: <em>«Если я получу динамическую позицию любым цветом, я буду абсолютно счастлив»</em>.</p>
+
+      <p>Но и на стороне Гукеша — тяжёлая артиллерия. Гжегож Гаевский, многолетний соратник Виши Ананда, уже доказал в Сингапуре-2024, что умеет готовить дебютные мины под конкретного соперника. Ещё в ноябре 2025 года, когда кризис Гукеша только набирал обороты, Гаевский публично заявил, что вся их программа перестроена под одну-единственную цель — пик формы к ноябрю 2026 года. То, что Гукеш пожертвовал турнирами <em>Grand Chess Tour</em> ради закрытых тренировочных лагерей, говорит о многом: в Женеве мы увидим совершенно другой дебютный репертуар чемпиона.</p>
+
+      <h3 class="sub-title">3. Призрак Шарджи и фактор тай-брейка</h3>
+      <p>В классических шахматах они встречались трижды. Главный психологический рубеж — их битва на турнире <em>Sharjah Masters</em> в 2022 году, где 16-летний Синдаров чёрными фигурами перехватил инициативу и разгромил Гукеша. Две другие классические партии (включая их недавнюю дуэль на <em>Tata Steel Masters</em> в Вейк-ан-Зее в январе 2026 года) завершились вничью.</p>
+
+      <p>Это создаёт чёткий стратегический расклад на 14 партий женевского матча. Если счёт дойдёт до отметки 7:7 и судьба короны будет решаться 12 декабря на тай-брейке (рапид 15+10, затем 10+5 и блиц 3+2), шансы Синдарова взлетят до небес. Человек, выигравший Кубок мира на тай-брейках и с детства привыкший играть молниеносно, в быстрых контролях чувствует себя как рыба в воде. Гукешу, чтобы сохранить титул, жизненно необходимо решать вопрос в классической части дистанции.</p>
+    </section>
+
+    <div class="ornament-divider">✦ ✦ ✦</div>
+
+    <!-- ЭПИЛОГ -->
+    <section class="chapter" id="epilogue">
+      <span class="chapter-meta">Эпилог · Ставки сделаны</span>
+      <h2 class="chapter-title">Почему раненый король опаснее всего</h2>
+
+      <p class="dropcap">За месяц до старта в Женеве шахматный мир почти единодушен в своих прогнозах. В сентябрьской колонке для <em>Financial Times</em> Магнус Карлсен прямо назвал Жавохира Синдарова следующим чемпионом мира, подчеркнув, что узбекский гроссмейстер сейчас попросту сильнее и стабильнее во всех компонентах игры. Букмекерские конторы дают на победу претендента коэффициент 4/11 (около 70% вероятности) против 2/1 на действующего чемпиона.</p>
+
+      <p>Даже капризы природы вплелись в предматчевый фольклор. После победы на солнечном Кипре Синдаров обронил журналистам фразу: <em>«Я не хочу играть матч на первенство мира в холодную погоду»</em>. По иронии судьбы FIDE выбрала не тёплую Индию и не солнечный Лимасол, а ноябрьско-декабрьскую Женеву, где с Альп и озера Леман тянет ледяной сыростью. Впрочем, как пошутили в ташкентской федерации, внутренний огонь Жавохира сейчас таков, что он способен растопить даже швейцарские ледники.</p>
+
+      <p>И всё-таки история шахмат учит одному непреложному правилу: <strong>в матче на первенство мира текущий рейтинг сгорает в ту секунду, когда пускают часы в первой партии</strong>.</p>
+
+      <p>Вспомните 2000 год в Лондоне, когда Гарри Каспаров выходил против Владимира Крамника безоговорочным фаворитом — и не смог выиграть ни одной партии. Вспомните 2012 год в Москве, когда списанный со счетов 43-летний Борис Гельфанд едва не отобрал корону у Ананда. И главное — вспомните Сингапур 2024 года: тогда сам Гукеш выходил против раздавленного кризисом, упавшего в рейтинге Дин Лижэня, и «сломанный» чемпион мира три недели держал юного претендента на краю пропасти вплоть до последнего часа четырнадцатой партии.</p>
+
+      <p>Матч из четырнадцати партий один на один — это не круговой турнир в Праге и не швейцарка в Самарканде. Здесь не нужно обыгрывать девять разных стилей подряд. Здесь нужно три недели смотреть в глаза одному-единственному человеку, выдерживая чудовищную клаустрофобию замкнутого пространства. И через это чистилище из них двоих проходил только Доммараджу Гукеш.</p>
+
+      <p>Более того: впервые за два года с плеч Гукеша упала та самая многотонная плита ожиданий. В Сингапуре от него требовали только победы. В Праге и Ченнаи от него требовали доказывать величие в каждом туре. А в Женеву он приезжает человеком, которого публично похоронили эксперты, списали букмекеры и окрестили «случайным королём» на интернет-форумах. Для двадцатилетнего бойца с характером фанатика нет более сладкого и опасного топлива, чем статус андердога при золотой короне на голове.</p>
+
+      <p>Двадцать четвёртого ноября в подземном зале библиотеки Мартина Бодмера, среди древних манускриптов и первопечатных книг, начнутся три недели, которые определят облик шахмат на десятилетие вперёд. На одной стороне доски — 20-летний «драгоценный камень» из Ташкента, не знающий страха и поражений, готовый короновать золотое поколение Узбекистана. На другой — 20-летний мудрец из Ченнаи, прошедший через раннюю славу и сокрушительное падение, чтобы доказать миру и самому себе, что его слёзы в Сингапуре были только началом.</p>
+
+      <p><strong>Часы запущены. Первая глава пишется в Женеве.</strong></p>
+    </section>
+
+  </main>
+
+  <footer class="article-footer">
+    <div>Salesforce FIDE World Championship Match 2026 · Fondation Martin Bodmer, Cologny, Geneva</div>
+    <div style="margin-top: 0.4rem;">Специальное интерактивное издание · Октябрь 2026</div>
+  </footer>
+
+  <script>
+    // 1. Индикатор прогресса чтения и подсветка оглавления
+    const progressBar = document.getElementById('readingProgress');
+    const sections = document.querySelectorAll('section.chapter');
+    const tocLinks = document.querySelectorAll('.side-toc .toc-item');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+
+      let currentId = 'prologue';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 220;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+      });
+    });
+
+    // 2. Переключение темы (Тёмная / Светлая)
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const htmlEl = document.documentElement;
+      const current = htmlEl.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', next);
+      themeToggle.textContent = next === 'dark' ? 'Светлая тема' : 'Тёмная тема';
+    });
+
+    // 3. Переключение кегля шрифта
+    const fontToggle = document.getElementById('fontToggle');
+    fontToggle.addEventListener('click', () => {
+      const htmlEl = document.documentElement;
+      const isLarge = htmlEl.getAttribute('data-fontsize') === 'large';
+      if (isLarge) {
+        htmlEl.removeAttribute('data-fontsize');
+        fontToggle.textContent = 'Аа+';
+      } else {
+        htmlEl.setAttribute('data-fontsize', 'large');
+        fontToggle.textContent = 'Аа-';
+      }
+    });
+
+    // 4. Фильтрация хронологии
+    const tlFilters = document.querySelectorAll('#timelineFilters .tab-btn');
+    const tlCards = document.querySelectorAll('#timelineTrack .tl-card');
+
+    tlFilters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tlFilters.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        tlCards.forEach(card => {
+          const player = card.getAttribute('data-player');
+          if (filter === 'all' || player === filter || player === 'both') {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 5. Переключение вкладок в аналитическом блоке (Глава V)
+    const duelBtns = document.querySelectorAll('#duelTabs .tab-btn');
+    const duelPanels = document.querySelectorAll('.duel-panel');
+
+    duelBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        duelBtns.forEach(b => b.classList.remove('active'));
+        duelPanels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const target = document.getElementById(btn.getAttribute('data-target'));
+        if (target) target.classList.add('active');
+      });
+    });
+
+    // 6. Интерактивный симулятор часов
+    const moveData = {
+      5:  { gTime: '01:56:00', sTime: '01:58:30', gText: 'Дебют по первой линии', sText: 'Мгновенный темп' },
+      10: { gTime: '01:45:00', sTime: '01:54:00', gText: 'Выход из дебюта, первое затяжное раздумье', sText: 'Воспроизведение домашней заготовки Видоняка' },
+      15: { gTime: '01:12:00', sTime: '01:41:00', gText: '33 минуты на расчёт критической жертвы', sText: 'Спокойная прогулка по залу с чашкой чая' },
+      20: { gTime: '00:41:00', sTime: '01:22:00', gText: 'Сжигает мосты в сложнейшем миттельшпиле', sText: 'Двукратный перевес по времени на часах' },
+      25: { gTime: '00:18:00', sTime: '00:58:00', gText: 'Приближение привычного цейтнота', sText: 'Создаёт практические проблемы каждым ходом' },
+      30: { gTime: '00:06:20', sTime: '00:39:00', gText: 'Острый цейтнот: 10 ходов за 6 минут без добавления', sText: 'Комфортный запас времени для точного расчёта' },
+      35: { gTime: '00:02:15', sTime: '00:24:00', gText: 'Игра на чистых рефлексах и 15-ходовом счёте', sText: 'Максимальное давление на флаг соперника' },
+      40: { gTime: '00:00:42', sTime: '00:14:10', gText: 'Контроль пройден на последних секундах!', sText: 'Контроль пройден с солидным запасом' }
+    };
+
+    const moveRange = document.getElementById('moveRange');
+    const moveLabel = document.getElementById('moveLabel');
+    const gClock = document.getElementById('gukeshClock');
+    const sClock = document.getElementById('sindarovClock');
+    const gStatus = document.getElementById('gukeshStatus');
+    const sStatus = document.getElementById('sindarovStatus');
+
+    moveRange.addEventListener('input', (e) => {
+      const m = e.target.value;
+      moveLabel.textContent = m + '-й ход';
+      const d = moveData[m];
+      if (d) {
+        gClock.textContent = d.gTime;
+        sClock.textContent = d.sTime;
+        gStatus.textContent = d.gText;
+        sStatus.textContent = d.sText;
+      }
+    });
+  </script>
+</body>
+</html>
