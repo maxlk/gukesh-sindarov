@@ -19,9 +19,9 @@
       --accent-gold: #c9a55c;
       --accent-gold-dim: rgba(201, 165, 92, 0.18);
       --accent-gukesh: #d97757;
-      --accent-gukesh-bg: rgba(217, 119, 87, 0.12);
+      --accent-gukesh-bg: rgba(217, 119, 87, 0.14);
       --accent-sindarov: #3b9b82;
-      --accent-sindarov-bg: rgba(59, 155, 130, 0.12);
+      --accent-sindarov-bg: rgba(59, 155, 130, 0.14);
       --border-subtle: rgba(232, 228, 220, 0.09);
       --border-gold: rgba(201, 165, 92, 0.35);
       --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.55);
@@ -41,9 +41,9 @@
       --accent-gold: #9a7428;
       --accent-gold-dim: rgba(154, 116, 40, 0.14);
       --accent-gukesh: #b85332;
-      --accent-gukesh-bg: rgba(184, 83, 50, 0.1);
+      --accent-gukesh-bg: rgba(184, 83, 50, 0.12);
       --accent-sindarov: #217861;
-      --accent-sindarov-bg: rgba(33, 120, 97, 0.1);
+      --accent-sindarov-bg: rgba(33, 120, 97, 0.12);
       --border-subtle: rgba(28, 27, 24, 0.1);
       --border-gold: rgba(154, 116, 40, 0.35);
       --shadow-card: 0 16px 40px rgba(28, 27, 24, 0.08);
@@ -180,7 +180,7 @@
       z-index: 800;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 0.8rem;
       max-width: 210px;
     }
 
@@ -196,7 +196,7 @@
       gap: 0.65rem;
       text-decoration: none;
       color: var(--text-muted);
-      font-size: 0.72rem;
+      font-size: 0.71rem;
       font-family: 'JetBrains Mono', monospace;
       transition: all 0.25s ease;
       line-height: 1.3;
@@ -496,6 +496,7 @@
       border: 1px solid var(--border-subtle);
       border-radius: 10px;
       box-shadow: var(--shadow-card);
+      scroll-margin-top: 85px;
     }
 
     @media (max-width: 860px) {
@@ -1090,6 +1091,238 @@
       margin-left: 3px;
     }
 
+    /* =======================================================
+       СТИЛИ СИМУЛЯТОРА СЧЁТА И ПРИЗОВОГО ФОНДА ЖЕНЕВЫ-2026
+       ======================================================= */
+    .sim-scoreboard {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 640px) {
+      .sim-scoreboard {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .sim-player-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .sim-player-col.right {
+      text-align: right;
+    }
+
+    @media (max-width: 640px) {
+      .sim-player-col.right { text-align: center; }
+    }
+
+    .sim-p-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .sim-p-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    .sim-prize {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+    }
+
+    .sim-prize-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .sim-center-score {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1.25rem;
+      border-left: 1px solid var(--border-subtle);
+      border-right: 1px solid var(--border-subtle);
+    }
+
+    .sim-big-digits {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.3rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .sim-status-pill {
+      margin-top: 0.3rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      background: var(--accent-gold-dim);
+      color: var(--accent-gold);
+      text-align: center;
+    }
+
+    .prob-meter-wrap {
+      margin-bottom: 1.4rem;
+    }
+
+    .prob-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .prob-bar-track {
+      width: 100%;
+      height: 12px;
+      background: var(--accent-sindarov);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .prob-bar-gukesh {
+      height: 100%;
+      background: var(--accent-gukesh);
+      width: 32%;
+      transition: width 0.35s ease;
+      border-right: 2px solid var(--bg-primary);
+    }
+
+    .games-grid-14 {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.55rem;
+      margin-bottom: 1.2rem;
+    }
+
+    @media (max-width: 820px) {
+      .games-grid-14 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .games-grid-14 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .g-slot {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: opacity 0.25s ease, border-color 0.2s ease;
+    }
+
+    .g-slot.locked {
+      opacity: 0.32;
+      pointer-events: none;
+    }
+
+    .g-slot-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.63rem;
+      color: var(--text-secondary);
+    }
+
+    .g-slot-colors {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--text-muted);
+    }
+
+    .g-slot-btns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .res-btn {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.28rem 0;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .res-btn:hover {
+      border-color: var(--accent-gold);
+      color: var(--text-primary);
+    }
+
+    .res-btn.active-g {
+      background: var(--accent-gukesh);
+      border-color: var(--accent-gukesh);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .res-btn.active-d {
+      background: var(--accent-gold-dim);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    .res-btn.active-s {
+      background: var(--accent-sindarov);
+      border-color: var(--accent-sindarov);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .tiebreak-banner {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-gold);
+      border-radius: 6px;
+      padding: 0.85rem 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .tiebreak-banner.visible {
+      display: flex;
+    }
+
     .ornament-divider {
       text-align: center;
       margin: 3.5rem 0;
@@ -1139,6 +1372,7 @@
     <a href="#chapter-4" class="toc-item"><span class="toc-dot"></span><span>IV. Год Дракона</span></a>
     <a href="#chapter-5" class="toc-item"><span class="toc-dot"></span><span>V. Дуэль лабораторий</span></a>
     <a href="#sharjah-viewer" class="toc-item"><span class="toc-dot"></span><span>Разбор партий: 2022 и 2026</span></a>
+    <a href="#match-simulator" class="toc-item"><span class="toc-dot"></span><span>Симулятор матча и призов</span></a>
     <a href="#epilogue" class="toc-item"><span class="toc-dot"></span><span>Эпилог. Раненый король</span></a>
   </nav>
 
@@ -1572,7 +1806,6 @@
 
       <!-- ИНТЕРАКТИВНЫЙ ПРОСМОТРЩИК ДВУХ ПАРТИЙ (ШАРДЖА-2022 И TATA STEEL 2026) -->
       <div class="interactive-widget" id="sharjah-viewer">
-        <!-- Переключатель партий -->
         <div class="game-selector-bar" id="gameSelectorBar">
           <button class="game-select-btn active" data-game="sharjah2022">
             <span class="gs-top"><span>Партия №1 · Sharjah Masters 2022</span><span>0–1 (36 ходов)</span></span>
@@ -1595,7 +1828,6 @@
         </div>
 
         <div class="chess-viewer-grid">
-          <!-- Левая колонка: Оценка + Доска + Кнопки -->
           <div class="board-area">
             <div class="eval-bar-outer" title="Оценка позиции">
               <div class="eval-score-label" id="evalLabel">+0.2</div>
@@ -1626,7 +1858,6 @@
             </div>
           </div>
 
-          <!-- Правая колонка: Комментарий + Список ходов -->
           <div class="game-info-panel">
             <div class="commentary-box">
               <div class="comm-move-badge">
@@ -1642,6 +1873,77 @@
       </div>
 
       <p>Этот контраст двух партий задаёт главный вопрос на 14 партий женевского матча: сумеет ли Гукеш дожимать такие позиции, какую он получил против Синдарова в Вейк-ан-Зее, или непробиваемая защита и темповая игра узбекского претендента доведут дело до тай-брейка 12 декабря, где в рапиде и блице Синдаров будет чувствовать себя в родной стихии?</p>
+
+      <!-- ИНТЕРАКТИВНЫЙ ВИДЖЕТ 4: СИМУЛЯТОР СЧЁТА И ПРИЗОВОГО ФОНДА ЖЕНЕВЫ-2026 -->
+      <div class="interactive-widget" id="match-simulator">
+        <div class="widget-header">
+          <div>
+            <div class="widget-subtitle">Финансово-турнирный калькулятор · Призовой фонд $2 500 000</div>
+            <div class="widget-title">Симулятор матча в Женеве (14 партий + тай-брейк)</div>
+          </div>
+          <div class="filter-tabs">
+            <button class="tab-btn" id="presetSingapore" title="Сценарий матча Гукеш — Дин Лижэнь (7,5 : 6,5 в 14-й партии)">Сингапур-2024</button>
+            <button class="tab-btn" id="presetSindarovRun" title="Победа Синдарова за 12 партий">Штурм Синдарова</button>
+            <button class="tab-btn" id="presetRandom" title="Случайная симуляция по вероятностям Эло">🎲 Случайный сценарий</button>
+            <button class="tab-btn" id="presetReset" title="Все ничьи (7:7)">Сброс (7:7)</button>
+          </div>
+        </div>
+
+        <p style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:1.1rem;">
+          По регламенту FIDE призовой фонд составляет <strong>$2 500 000</strong>: каждый игрок получает по <strong>$200 000 за каждую результативную классическую победу</strong>, а оставшаяся сумма делится поровну (если судьба короны решается на тай-брейке при счёте 7:7, победитель получает не менее $1 300 000, проигравший — $1 200 000). Кликайте по исходам любой из 14 партий ниже:
+        </p>
+
+        <!-- Главное табло симулятора -->
+        <div class="sim-scoreboard">
+          <div class="sim-player-col">
+            <span class="sim-p-tag" style="color:var(--accent-gukesh)">Чемпион мира · Индия</span>
+            <span class="sim-p-name">Доммараджу Гукеш</span>
+            <span class="sim-prize" id="simGukeshPrize">$1 250 000</span>
+            <span class="sim-prize-sub" id="simGukeshWins">Классических побед: 0 ($0 бонус)</span>
+          </div>
+
+          <div class="sim-center-score">
+            <div class="sim-big-digits">
+              <span id="simGukeshScore" style="color:var(--accent-gukesh)">7</span>
+              <span style="color:var(--text-muted); font-size:1.4rem;">:</span>
+              <span id="simSindarovScore" style="color:var(--accent-sindarov)">7</span>
+            </div>
+            <div class="sim-status-pill" id="simMatchStatus">Равенство 7:7 → Тай-брейк 12 декабря</div>
+          </div>
+
+          <div class="sim-player-col right">
+            <span class="sim-p-tag" style="color:var(--accent-sindarov)">Претендент · Узбекистан</span>
+            <span class="sim-p-name">Жавохир Синдаров</span>
+            <span class="sim-prize" id="simSindarovPrize">$1 250 000</span>
+            <span class="sim-prize-sub" id="simSindarovWins">Классических побед: 0 ($0 бонус)</span>
+          </div>
+        </div>
+
+        <!-- Динамическая шкала вероятности титула -->
+        <div class="prob-meter-wrap">
+          <div class="prob-labels">
+            <span style="color:var(--accent-gukesh)">Вероятность титула Гукеша: <strong id="probGukeshText">32%</strong></span>
+            <span style="color:var(--accent-sindarov)">Вероятность титула Синдарова: <strong id="probSindarovText">68%</strong></span>
+          </div>
+          <div class="prob-bar-track">
+            <div class="prob-bar-gukesh" id="probBarGukesh"></div>
+          </div>
+        </div>
+
+        <!-- Сетка 14 партий с точными датами Женевы -->
+        <div class="games-grid-14" id="simGamesGrid"></div>
+
+        <!-- Блок выбора победителя тай-брейка при счёте 7:7 -->
+        <div class="tiebreak-banner visible" id="tiebreakBanner">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:0.74rem;">
+            <strong style="color:var(--accent-gold);">⚡ Тай-брейк (12 декабря, 15+10 рапид):</strong> Счёт классики 7 : 7. Выберите победителя быстрых шахмат:
+          </div>
+          <div class="filter-tabs">
+            <button class="tab-btn" id="tbBtnGukesh">Победа Гукеша на тай-брейке</button>
+            <button class="tab-btn active" id="tbBtnSindarov">Победа Синдарова на тай-брейке</button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div class="ornament-divider">✦ ✦ ✦</div>
@@ -1678,7 +1980,7 @@
   <script>
     // 1. Индикатор прогресса чтения и подсветка оглавления
     const progressBar = document.getElementById('readingProgress');
-    const sections = document.querySelectorAll('section.chapter, #sharjah-viewer');
+    const sections = document.querySelectorAll('section.chapter, #sharjah-viewer, #match-simulator');
     const tocLinks = document.querySelectorAll('.side-toc .toc-item');
 
     window.addEventListener('scroll', () => {
@@ -2204,7 +2506,6 @@
       }
     }
 
-    // Обработчики переключения между партиями (Шарджа-2022 / Вейк-ан-Зее-2026)
     const gameSelectorBtns = document.querySelectorAll('#gameSelectorBar .game-select-btn');
     gameSelectorBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -2252,8 +2553,242 @@
       }
     });
 
-    // Инициализация первой партии по умолчанию
     loadGame('sharjah2022');
+
+    // =========================================================================
+    // 8. СИМУЛЯТОР СЧЁТА ЖЕНЕВСКОГО МАТЧА (14 ПАРТИЙ + ТАЙ-БРЕЙК + ПРИЗОВОЙ ФОНД)
+    // =========================================================================
+    const GENEVA_SCHEDULE = [
+      { g: 1,  date: "24 ноя", w: "Гукеш" },
+      { g: 2,  date: "25 ноя", w: "Синдаров" },
+      { g: 3,  date: "27 ноя", w: "Гукеш" },
+      { g: 4,  date: "28 ноя", w: "Синдаров" },
+      { g: 5,  date: "29 ноя", w: "Гукеш" },
+      { g: 6,  date: "1 дек",  w: "Синдаров" },
+      { g: 7,  date: "2 дек",  w: "Синдаров" },
+      { g: 8,  date: "4 дек",  w: "Гукеш" },
+      { g: 9,  date: "5 дек",  w: "Синдаров" },
+      { g: 10, date: "6 дек",  w: "Гукеш" },
+      { g: 11, date: "8 дек",  w: "Синдаров" },
+      { g: 12, date: "9 дек",  w: "Гукеш" },
+      { g: 13, date: "10 дек", w: "Синдаров" },
+      { g: 14, date: "11 дек", w: "Гукеш" }
+    ];
+
+    // Изначально все 14 партий = ничья ('D'); 'G' = победа Гукеша, 'S' = победа Синдарова
+    let simResults = new Array(14).fill('D');
+    let tbWinner = 'S'; // По умолчанию на тай-брейке фаворит Синдаров
+
+    const simGridEl = document.getElementById('simGamesGrid');
+    const simGukeshScoreEl = document.getElementById('simGukeshScore');
+    const simSindarovScoreEl = document.getElementById('simSindarovScore');
+    const simGukeshPrizeEl = document.getElementById('simGukeshPrize');
+    const simSindarovPrizeEl = document.getElementById('simSindarovPrize');
+    const simGukeshWinsEl = document.getElementById('simGukeshWins');
+    const simSindarovWinsEl = document.getElementById('simSindarovWins');
+    const simMatchStatusEl = document.getElementById('simMatchStatus');
+    const probGukeshTextEl = document.getElementById('probGukeshText');
+    const probSindarovTextEl = document.getElementById('probSindarovText');
+    const probBarGukeshEl = document.getElementById('probBarGukesh');
+    const tiebreakBannerEl = document.getElementById('tiebreakBanner');
+    const tbBtnGukesh = document.getElementById('tbBtnGukesh');
+    const tbBtnSindarov = document.getElementById('tbBtnSindarov');
+
+    function formatUSD(num) {
+      return '$' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    }
+
+    function formatChessScore(val) {
+      const floor = Math.floor(val);
+      return (val - floor === 0.5) ? (floor === 0 ? '½' : floor + '½') : String(floor);
+    }
+
+    function buildSimGrid() {
+      simGridEl.innerHTML = '';
+      GENEVA_SCHEDULE.forEach((item, idx) => {
+        const slot = document.createElement('div');
+        slot.className = 'g-slot';
+        slot.id = 'sim-slot-' + idx;
+
+        const head = document.createElement('div');
+        head.className = 'g-slot-head';
+        head.innerHTML = `<strong>Партия ${item.g}</strong><span>${item.date}</span>`;
+        slot.appendChild(head);
+
+        const colInfo = document.createElement('div');
+        colInfo.className = 'g-slot-colors';
+        colInfo.textContent = `Белые: ${item.w}`;
+        slot.appendChild(colInfo);
+
+        const btns = document.createElement('div');
+        btns.className = 'g-slot-btns';
+
+        const btnG = document.createElement('button');
+        btnG.className = 'res-btn';
+        btnG.textContent = 'Гук';
+        btnG.title = 'Победа Гукеша в партии ' + item.g;
+        btnG.addEventListener('click', () => { simResults[idx] = 'G'; recalcMatchSim(); });
+
+        const btnD = document.createElement('button');
+        btnD.className = 'res-btn';
+        btnD.textContent = '½';
+        btnD.title = 'Ничья в партии ' + item.g;
+        btnD.addEventListener('click', () => { simResults[idx] = 'D'; recalcMatchSim(); });
+
+        const btnS = document.createElement('button');
+        btnS.className = 'res-btn';
+        btnS.textContent = 'Син';
+        btnS.title = 'Победа Синдарова в партии ' + item.g;
+        btnS.addEventListener('click', () => { simResults[idx] = 'S'; recalcMatchSim(); });
+
+        btns.appendChild(btnG);
+        btns.appendChild(btnD);
+        btns.appendChild(btnS);
+        slot.appendChild(btns);
+        simGridEl.appendChild(slot);
+      });
+    }
+
+    function recalcMatchSim() {
+      let gScore = 0;
+      let sScore = 0;
+      let gWins = 0;
+      let sWins = 0;
+      let clinchGame = null;
+      let winner = null;
+
+      for (let i = 0; i < 14; i++) {
+        const slotEl = document.getElementById('sim-slot-' + i);
+        const [btnG, btnD, btnS] = slotEl.querySelectorAll('.res-btn');
+        btnG.className = 'res-btn';
+        btnD.className = 'res-btn';
+        btnS.className = 'res-btn';
+
+        if (clinchGame !== null) {
+          // Матч уже завершился досрочно
+          slotEl.classList.add('locked');
+          continue;
+        }
+
+        slotEl.classList.remove('locked');
+        const r = simResults[i];
+        if (r === 'G') {
+          gScore += 1;
+          gWins += 1;
+          btnG.classList.add('active-g');
+        } else if (r === 'S') {
+          sScore += 1;
+          sWins += 1;
+          btnS.classList.add('active-s');
+        } else {
+          gScore += 0.5;
+          sScore += 0.5;
+          btnD.classList.add('active-d');
+        }
+
+        if (gScore >= 7.5) {
+          clinchGame = i + 1;
+          winner = 'G';
+        } else if (sScore >= 7.5) {
+          clinchGame = i + 1;
+          winner = 'S';
+        }
+      }
+
+      simGukeshScoreEl.textContent = formatChessScore(gScore);
+      simSindarovScoreEl.textContent = formatChessScore(sScore);
+
+      // Расчёт призового фонда ($2 500 000 всего, $200 000 за каждую классическую победу)
+      const totalFund = 2500000;
+      const winBonusG = gWins * 200000;
+      const winBonusS = sWins * 200000;
+      const remainder = Math.max(0, totalFund - winBonusG - winBonusS);
+
+      let gPrize = winBonusG + remainder / 2;
+      let sPrize = winBonusS + remainder / 2;
+
+      if (winner === 'G') {
+        tiebreakBannerEl.classList.remove('visible');
+        simMatchStatusEl.textContent = `Гукеш защитил титул в ${clinchGame}-й партии! (${formatChessScore(gScore)} : ${formatChessScore(sScore)})`;
+        probGukeshTextEl.textContent = '100%';
+        probSindarovTextEl.textContent = '0%';
+        probBarGukeshEl.style.width = '100%';
+      } else if (winner === 'S') {
+        tiebreakBannerEl.classList.remove('visible');
+        simMatchStatusEl.textContent = `Синдаров — новый чемпион мира в ${clinchGame}-й партии! (${formatChessScore(gScore)} : ${formatChessScore(sScore)})`;
+        probGukeshTextEl.textContent = '0%';
+        probSindarovTextEl.textContent = '100%';
+        probBarGukeshEl.style.width = '0%';
+      } else {
+        // Счёт 7 : 7 после 14 партий -> Тай-брейк
+        tiebreakBannerEl.classList.add('visible');
+        // Если матч дошёл до тай-брейка без побед или с равным числом побед, победитель тай-брейка получает +$100 000 из остатка
+        gPrize = winBonusG + (tbWinner === 'G' ? remainder * 0.54 : remainder * 0.46);
+        sPrize = winBonusS + (tbWinner === 'S' ? remainder * 0.54 : remainder * 0.46);
+
+        if (tbWinner === 'G') {
+          simMatchStatusEl.textContent = 'Счёт 7:7 · Гукеш удерживает корону на тай-брейке 12 декабря!';
+          probGukeshTextEl.textContent = '38% (в рапиде)';
+          probSindarovTextEl.textContent = '62% (в рапиде)';
+          probBarGukeshEl.style.width = '38%';
+        } else {
+          simMatchStatusEl.textContent = 'Счёт 7:7 · Синдаров забирает корону на тай-брейке 12 декабря!';
+          probGukeshTextEl.textContent = '32% (до старта)';
+          probSindarovTextEl.textContent = '68% (фаворит)';
+          probBarGukeshEl.style.width = '32%';
+        }
+      }
+
+      simGukeshPrizeEl.textContent = formatUSD(gPrize);
+      simSindarovPrizeEl.textContent = formatUSD(sPrize);
+      simGukeshWinsEl.textContent = `Классических побед: ${gWins} (${formatUSD(winBonusG)} бонус)`;
+      simSindarovWinsEl.textContent = `Классических побед: ${sWins} (${formatUSD(winBonusS)} бонус)`;
+    }
+
+    tbBtnGukesh.addEventListener('click', () => {
+      tbWinner = 'G';
+      tbBtnGukesh.classList.add('active');
+      tbBtnSindarov.classList.remove('active');
+      recalcMatchSim();
+    });
+
+    tbBtnSindarov.addEventListener('click', () => {
+      tbWinner = 'S';
+      tbBtnSindarov.classList.add('active');
+      tbBtnGukesh.classList.remove('active');
+      recalcMatchSim();
+    });
+
+    // Пресеты сценариев
+    document.getElementById('presetReset').addEventListener('click', () => {
+      simResults = new Array(14).fill('D');
+      recalcMatchSim();
+    });
+
+    document.getElementById('presetSingapore').addEventListener('click', () => {
+      // Точная калька динамики Сингапура-2024: обмен ударами и решающая победа Гукеша в 14-й партии
+      simResults = ['S', 'D', 'G', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'G', 'S', 'D', 'G'];
+      recalcMatchSim();
+    });
+
+    document.getElementById('presetSindarovRun').addEventListener('click', () => {
+      // Досрочная победа Синдарова 7,5 : 4,5 в 12-й партии (в день его 21-летия 8 декабря!)
+      simResults = ['D', 'S', 'D', 'D', 'G', 'S', 'D', 'D', 'S', 'D', 'S', 'D', 'D', 'D'];
+      recalcMatchSim();
+    });
+
+    document.getElementById('presetRandom').addEventListener('click', () => {
+      simResults = GENEVA_SCHEDULE.map(item => {
+        const r = Math.random();
+        if (r < 0.62) return 'D';
+        if (r < 0.78) return 'G';
+        return 'S';
+      });
+      recalcMatchSim();
+    });
+
+    buildSimGrid();
+    recalcMatchSim();
   </script>
 </body>
 </html>
